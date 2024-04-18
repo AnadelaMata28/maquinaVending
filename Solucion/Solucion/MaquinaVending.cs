@@ -72,14 +72,14 @@ namespace Solucion {
         }
 
         public void FullProductLoading() {
-
+            Console.WriteLine();
         }
 
         public void Exit() {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
         }
-
+        
         public void ToFile() {
             StreamWriter sw = new StreamWriter("productos.txt", true);
             sw.WriteLine($"{Id}; {Nombre}; {Unidades}; {PrecioUnitario}; {Descripcion}; {TipoMaterial}; {Peso}; {Pilas}; {Precargado}; {InformacionNutricional}");
