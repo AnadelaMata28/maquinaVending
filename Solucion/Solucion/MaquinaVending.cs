@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Solucion {
         public string Nombre { get; set; }
         public int UnidadesDisponibles { get; set; }
         public int Precio { get; set; }
-        List <Producto> Productos { get; set; }
+        List<Producto> listaProductos;
 
         public MaquinaVending() { }
 
@@ -47,8 +48,10 @@ namespace Solucion {
                 }
             } while (opcion != 1);
         }
-
-        public void ProductInfo(int Id) {
+        
+        public void ProductInfo() {
+            Producto productoTemp = null;
+            productoTemp = ElegirProducto();
 
         }
 
