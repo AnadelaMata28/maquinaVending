@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 namespace Solucion {
     internal class MaquinaVending {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int UnidadesDisponibles { get; set; }
-        public int Precio { get; set; }
         List<Producto> listaProductos;
 
         public MaquinaVending() { }
@@ -24,8 +21,6 @@ namespace Solucion {
         }
 
         public void BuyProducts() {
-            Console.WriteLine("Introduzca el ID del producto que desee comprar: ");
-            Id = int.Parse(Console.ReadLine());
             Console.WriteLine(ProductInfo(Id));
 
             int opcion = 0;
@@ -39,20 +34,18 @@ namespace Solucion {
                         Exit();
                         break;
                     case 1:
-                        Console.WriteLine("Introduzca el ID del producto que desee comprar: ");
-                        Id = int.Parse(Console.ReadLine());
-                        Console.WriteLine(ProductInfo(Id));
+                        BuyProducts();
                         break;
                     default:
                         break;
                 }
             } while (opcion != 1);
         }
-        
-        public void ProductInfo() {
-            Producto productoTemp = null;
-            productoTemp = ElegirProducto();
 
+        public string ProductInfo() {
+            Producto productoTemp = null;
+            productoTemp = ElegirProducto(listaProductos);
+            return $"{productoTemp.MostrarDetalles()}";
         }
 
         public void IndividualProductLoading() {
@@ -65,6 +58,7 @@ namespace Solucion {
 
         public void Exit() {
             Console.WriteLine("Muchas gracias por su compra!");
+            Console.Clear();
         }
     }
 }
