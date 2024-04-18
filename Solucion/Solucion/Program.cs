@@ -13,6 +13,23 @@ namespace Solucion
         {
             string contraseña = 'admin';
 
+<<<<<<< HEAD
+            int opcion = 0;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("|           Máquina Vending UFV           |");
+            Console.WriteLine("|-----------------------------------------|"); 
+            Console.WriteLine("|  Opciones:                              |");
+            Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("| 1. Comprar productos                    |");
+            Console.WriteLine("| 2. Mostrar la información del producto  |");
+            Console.WriteLine("| 3. Carga individual del producto        |");
+            Console.WriteLine("| 4. Carga completa de productos          |");
+            Console.WriteLine("| 5. Salir                                |");
+            Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("| Introduzca la opción que desee realizar |");
+            Console.WriteLine("------------------------------------------");
+            opcion = int.Parse(Console.ReadLine());
+=======
             do
             {
                 int opcion = 0;
@@ -30,6 +47,7 @@ namespace Solucion
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("-------------------------------------------");
                 opcion = int.Parse(Console.ReadLine());
+>>>>>>> 14f1c9c26b73997a2612dca88b9fc3f941ec9945
 
                 switch (opcion)
                 {

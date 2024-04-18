@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,8 @@ namespace Solucion {
 
         public MaquinaVending() { }
 
-        public MaquinaVending(int id, string nombre, int unidadesDisponibles, int precio) {
+        public MaquinaVending(int id) {
             Id = id;
-            Nombre = nombre;
-            UnidadesDisponibles = unidadesDisponibles;
-            Precio = precio;
         }
 
         public void BuyProducts() {
@@ -35,6 +33,31 @@ namespace Solucion {
                         break;
                     case 1:
                         BuyProducts();
+                        Console.WriteLine("¿Desea cancelar con la compra? (Si = 1 / No = 0)");
+                        int respuesta = int.Parse(Console.ReadLine());
+                        if (respuesta == 1)
+                        {
+                            Exit();
+                        }
+                        else (respuesta == 0) {
+                            do
+                            {
+                                int option = 0;
+                                Console.WriteLine("Método para pagar: ");
+                                Console.WriteLine("1. Efectivo");
+                                Console.WriteLine("2. Tarjeta");
+
+                                switch (option)
+                                {
+                                    case 1:
+                                        Pagar.PagarEfectivo();
+                                        break;
+                                    case 2:
+                                        Pagar.PagarTarjeta();
+                                        break;
+                                }
+                            } while (option != 2);
+                        }
                         break;
                     default:
                         break;
@@ -48,10 +71,6 @@ namespace Solucion {
             return $"{productoTemp.MostrarDetalles()}";
         }
 
-        public void IndividualProductLoading() {
-
-        }
-
         public void FullProductLoading() {
 
         }
@@ -59,6 +78,11 @@ namespace Solucion {
         public void Exit() {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
+        }
+
+        public void ToFile() {
+            StreamWriter sw = new StreamWriter("productos.txt", true);
+            sw.WriteLine($"{Id}; {Nombre}; {Unidades}; {PreioUnitario}; {}");
         }
     }
 }
