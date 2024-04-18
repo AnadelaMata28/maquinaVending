@@ -33,6 +33,31 @@ namespace Solucion {
                         break;
                     case 1:
                         BuyProducts();
+                        Console.WriteLine("¿Desea cancelar con la compra? (Si = 1 / No = 0)");
+                        int respuesta = int.Parse(Console.ReadLine());
+                        if (respuesta == 1)
+                        {
+                            Exit();
+                        }
+                        else (respuesta == 0) {
+                            do
+                            {
+                                int option = 0;
+                                Console.WriteLine("Método para pagar: ");
+                                Console.WriteLine("1. Efectivo");
+                                Console.WriteLine("2. Tarjeta");
+
+                                switch (option)
+                                {
+                                    case 1:
+                                        Pagar.PagarEfectivo();
+                                        break;
+                                    case 2:
+                                        Pagar.PagarTarjeta();
+                                        break;
+                                }
+                            } while (option != 2);
+                        }
                         break;
                     default:
                         break;
