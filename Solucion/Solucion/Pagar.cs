@@ -4,28 +4,25 @@ namespace Solucion
 {
     internal class Pagar
     {
+       
+         public string PagarEfectivo()
+         {
+             
+             Console.WriteLine("Introduce la cantidad introducida: ");
+             int dinero = int.Parse(Console.ReadLine());
+         }
 
-        do {
-             int option = 0;
-            Console.WriteLine("Método para pagar: "); 
-            Console.WriteLine("1. Efectivo"); 
-            Console.WriteLine("2. Tarjeta"); 
+         public void PagarTarjeta()
+         {
+             Console.WriteLine("Número de tarjeta: ");
+             int numeroTarjeta = int.Parse(Console.ReadLine());
+             Console.WriteLine("Fecha de caducidad: ");
+             string fechaCaducidad = Console.ReadLine();
+             Console.WriteLine("Código de seguridad: ");
+             int codigoSeguridad = int.Parse(Console.ReadLine());
+             Console.ReadKey();
+             Console.WriteLine("Pagando....");
 
-            switch (option) {
-                case 1: 
-                    PagarEfectivo(); 
-                break; 
-                case 2: 
-                   PagarTarejta();
-                break; 
-            }
-        } while (option != 2); 
-
-        public void PagarEfectivo()
-        {
-            
-            Console.WriteLine("Introduce la cantidad introducida: "); 
-            int dinero = int.Parse(Console.ReadLine()); 
-        }
+         }
     }
 }
