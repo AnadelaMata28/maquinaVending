@@ -21,5 +21,9 @@ namespace Solucion
             PrecioUnitario = precioUnitario;
             Descripcion = descripcion;
         }
+        public virtual string MostrarDetalles()
+        {
+            return $"Nombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}"
+        }
     }
 }

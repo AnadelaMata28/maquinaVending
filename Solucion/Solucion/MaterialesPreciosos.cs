@@ -19,5 +19,9 @@ namespace Solucion
             TipoMaterial = tipoMaterial;
             Peso = peso;
         }
+        public override string MostrarDetalles()
+        {
+            return base.MostrarDetalles() + $"\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso}";
+        }
     }
 }

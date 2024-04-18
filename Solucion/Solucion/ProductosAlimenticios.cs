@@ -15,5 +15,9 @@ namespace Solucion
         {
             InformacionNutricional = informacionNutricional;
         }
+        public override string MostrarDetalles()
+        {
+            return base.MostrarDetalles() + $"\n\tInformación nutricional: {InformacionNutricional}";
+        }
     }
 }

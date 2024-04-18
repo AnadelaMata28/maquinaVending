@@ -19,5 +19,9 @@ namespace Solucion
             Pilas = pilas;
             Precargado = precargado;
         }
+        public override string MostrarDetalles()
+        {
+            return base.MostrarDetalles() + $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
+        }
     }
 }
