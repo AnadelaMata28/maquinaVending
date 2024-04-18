@@ -141,6 +141,7 @@ namespace Solucion
                 Console.ReadKey();
 
             } while (opcion != 4);
+            Console.ReadKey ();
         }
     }
 }
