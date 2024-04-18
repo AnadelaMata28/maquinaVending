@@ -10,7 +10,14 @@ namespace Solucion
     internal class MaterialesPreciosos : Producto
     {
         public string TipoMaterial {  get; set; }
+
         public double Peso {  get; set; }
-        public MaterialesPreciosos(string tipoMaterial, double peso) : base
+            
+        public MaterialesPreciosos(string nombre, int unidades, double precioUnitario, string descripcion, string tipoMaterial, double peso) 
+            : base(string nombre, int unidades, double precioUnitario, string descripcion)
+        {
+            TipoMaterial = tipoMaterial;
+            Peso = peso;
+        }
     }
 }
