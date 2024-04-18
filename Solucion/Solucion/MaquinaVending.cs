@@ -82,7 +82,8 @@ namespace Solucion {
 
         public void ToFile() {
             StreamWriter sw = new StreamWriter("productos.txt", true);
-            sw.WriteLine($"{Id}; {Nombre}; {Unidades}; {PreioUnitario}; {}");
+            sw.WriteLine($"{Id}; {Nombre}; {Unidades}; {PrecioUnitario}; {Descripcion}; {TipoMaterial}; {Peso}; {Pilas}; {Precargado}; {InformacionNutricional}");
+            sw.Close();
         }
     }
 }
