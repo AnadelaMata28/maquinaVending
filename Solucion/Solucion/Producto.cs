@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solucion
 {
-    internal class Producto : MaquinaVending
+    internal class Producto
     {
         public string Nombre {  get; set; }
 
@@ -16,10 +16,7 @@ namespace Solucion
 
         public string Descripcion { get; set; }
 
-        public Producto(int count) 
-        {
-            Id = count + 1;
-        }
+        public Producto() { }
 
         public Producto(string nombre, int unidades, double precioUnitario, string descripcion)
         {
