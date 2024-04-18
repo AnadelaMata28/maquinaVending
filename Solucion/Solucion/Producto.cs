@@ -31,7 +31,7 @@ namespace Solucion
 
         public virtual string MostrarDetalles()
         {
-            return $"Nombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}"
+            return $"Nombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}";
         }
 
         public Producto ElegirProducto()
