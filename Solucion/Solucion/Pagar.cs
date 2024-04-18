@@ -7,9 +7,14 @@ namespace Solucion
        
          public string PagarEfectivo()
          {
+            do
+            {
+                Console.WriteLine("Introduce la cantidad introducida: ");
+                int dinero = int.Parse(Console.ReadLine());
+            } while (dinero < precioTotal); 
+
+
              
-             Console.WriteLine("Introduce la cantidad introducida: ");
-             int dinero = int.Parse(Console.ReadLine());
          }
 
          public void PagarTarjeta()

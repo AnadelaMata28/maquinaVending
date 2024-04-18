@@ -19,6 +19,7 @@ namespace Solucion {
         }
 
         public void BuyProducts() {
+            Pagar pagar = null; 
             Console.WriteLine(ProductInfo(Id));
 
             int opcion = 0;
@@ -50,10 +51,10 @@ namespace Solucion {
                                 switch (option)
                                 {
                                     case 1:
-                                        Pagar.PagarEfectivo();
+                                        pagar.PagarEfectivo();
                                         break;
                                     case 2:
-                                        Pagar.PagarTarjeta();
+                                        pagar.PagarTarjeta();
                                         break;
                                 }
                             } while (option != 2);
