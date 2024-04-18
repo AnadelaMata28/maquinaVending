@@ -25,7 +25,7 @@ namespace Solucion
             Console.WriteLine("| 4. Carga completa de productos          |");
             Console.WriteLine("| 5. Salir                                |");
             Console.WriteLine("|-----------------------------------------|");
-            Console.WriteLine("| Introduzca la opción que desee realizar |")
+            Console.WriteLine("| Introduzca la opción que desee realizar |");
             Console.WriteLine("------------------------------------------");
             opcion = int.Parse(Console.ReadLine());
 
