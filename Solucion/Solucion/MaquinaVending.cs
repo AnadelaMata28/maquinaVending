@@ -18,9 +18,17 @@ namespace Solucion {
             Id = id;
         }
 
-        public void BuyProducts() {
-            Pagar pagar = null; 
-            Console.WriteLine(ProductInfo(Id));
+        public void BuyProducts() 
+        {
+            double precioTotal = 0;
+            Pagar pagar = null;
+            Producto productoTemp = null;
+
+            ProductosDisponibles();
+
+            Console.WriteLine(ProductInfo());
+
+            precioTotal += productoTemp.PrecioUnitario;
 
             int opcion = 0;
             Console.WriteLine("Desea comprar algún otro producto?");
@@ -29,36 +37,56 @@ namespace Solucion {
             do {
                 switch (opcion) {
                     case 0:
-                        Console.WriteLine(ProductInfo(Id));
+                        int option = 0;
+                        do
+                        {
+                            Console.WriteLine("Método para pagar: ");
+                            Console.WriteLine("1. Efectivo");
+                            Console.WriteLine("2. Tarjeta");
+
+                            switch (option)
+                            {
+                                case 1:
+                                    pagar.PagarEfectivo(precioTotal);
+                                    break;
+                                case 2:
+                                    pagar.PagarTarjeta(precioTotal);
+                                    break;
+                            }
+                        } while (option != 2);
+
                         Exit();
                         break;
                     case 1:
-                        BuyProducts();
                         Console.WriteLine("¿Desea cancelar con la compra? (Si = 1 / No = 0)");
                         int respuesta = int.Parse(Console.ReadLine());
-                        if (respuesta == 1)
+                        if (respuesta == 0)
                         {
-                            Exit();
+                            BuyProducts();
                         }
-                        else (respuesta == 0) {
+
+                        else if (respuesta == 1) 
+                        {
+                            int option2 = 0;
                             do
                             {
-                                int option = 0;
                                 Console.WriteLine("Método para pagar: ");
                                 Console.WriteLine("1. Efectivo");
                                 Console.WriteLine("2. Tarjeta");
 
-                                switch (option)
+                                switch (option2)
                                 {
                                     case 1:
-                                        pagar.PagarEfectivo();
+                                        pagar.PagarEfectivo(precioTotal);
                                         break;
                                     case 2:
-                                        pagar.PagarTarjeta();
+                                        pagar.PagarTarjeta(precioTotal);
                                         break;
                                 }
-                            } while (option != 2);
+                            } while (option2 != 2);
                         }
+                        Exit();
+
                         break;
                     default:
                         break;
@@ -66,10 +94,11 @@ namespace Solucion {
             } while (opcion != 1);
         }
 
-        public string ProductInfo() {
-            Producto productoTemp = null;
-            productoTemp = ElegirProducto(listaProductos);
-            return $"{productoTemp.MostrarDetalles()}";
+        public string ProductInfo() 
+        {
+            Producto producto = ElegirProducto(listaProductos);
+
+            return $"{producto.MostrarDetalles()}";
         }
 
         public void FullProductLoading() {
@@ -80,12 +109,32 @@ namespace Solucion {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
         }
-        
-        public void ToFile() {
-            StreamWriter sw = new StreamWriter("productos.txt", true);
-            sw.WriteLine($"{Id}; {Nombre}; {Unidades}; {PrecioUnitario}; {Descripcion}; {TipoMaterial}; {Peso}; {Pilas}; {Precargado}; {InformacionNutricional}");
-            sw.Close();
+
+        public void ProductosDisponibles()
+        {
+            foreach(Producto producto in listaProductos)
+            {
+                Console.WriteLine(producto.MostrarDetalles());
+            }
         }
+        public Producto ElegirProducto(List<Producto> listaProductos)
+        {
+            Producto productoTemp = null;
+
+            Console.WriteLine("Introuce el Id del producto que deseas: ");
+            int id = int.Parse(Console.ReadLine());
+
+            foreach (Producto producto in listaProductos)
+            {
+                if (producto.Id == id)
+                {
+                    productoTemp = producto;
+                }
+            }
+
+            return productoTemp;
+        }
+
     }
 }
      

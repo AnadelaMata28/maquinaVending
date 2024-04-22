@@ -20,7 +20,7 @@ namespace Solucion
         }
 
         public ProductosElectronicos(string nombre, int unidades, double precioUnitario, string descripcion, string tiposMateriales, bool pilas, bool precargado)
-            : base(string nombre, int unidades, double precioUnitario, string descripcion)
+            : base(nombre, unidades, precioUnitario, descripcion)
         {
             TiposMateriales = tiposMateriales;
             Pilas = pilas;
@@ -29,6 +29,17 @@ namespace Solucion
         public override string MostrarDetalles()
         {
             return base.MostrarDetalles() + $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
+        }
+        public override void SolicitarDetalles()
+        {
+            base.SolicitarDetalles();
+
+            Console.Write("Tipos de materiales: ");
+            TiposMateriales = Console.ReadLine();
+            Console.Write("Pilas (1 - SI / 0 - NO): ");
+            Pilas = bool.Parse(Console.ReadLine());
+            Console.Write("Precargado (1 - SI / 0 - NO): ");
+            Precargado = bool.Parse(Console.ReadLine());
         }
     }
 }

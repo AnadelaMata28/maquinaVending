@@ -16,13 +16,20 @@ namespace Solucion
         }
 
         public ProductosAlimenticios(string nombre, int unidades, double precioUnitario, string descripcion, string informacionNutricional)
-            : base(string nombre, int unidades, double precioUnitario, string descripcion)
+            : base(nombre, unidades, precioUnitario, descripcion)
         {
             InformacionNutricional = informacionNutricional;
         }
         public override string MostrarDetalles()
         {
             return base.MostrarDetalles() + $"\n\tInformación nutricional: {InformacionNutricional}";
+        }
+        public override void SolicitarDetalles()
+        {
+            base.SolicitarDetalles();
+
+            Console.Write("Información nutricional: ");
+            InformacionNutricional = Console.ReadLine();
         }
     }
 }

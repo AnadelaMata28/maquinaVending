@@ -19,7 +19,7 @@ namespace Solucion
         }
             
         public MaterialesPreciosos(string nombre, int unidades, double precioUnitario, string descripcion, string tipoMaterial, double peso) 
-            : base(string nombre, int unidades, double precioUnitario, string descripcion)
+            : base(nombre, unidades, precioUnitario, descripcion)
         {
             TipoMaterial = tipoMaterial;
             Peso = peso;
@@ -27,6 +27,15 @@ namespace Solucion
         public override string MostrarDetalles()
         {
             return base.MostrarDetalles() + $"\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso}";
+        }
+        public override void SolicitarDetalles()
+        {
+            base.SolicitarDetalles();
+
+            Console.Write("Tipo de material: ");
+            TipoMaterial = Console.ReadLine();
+            Console.Write("Peso (gramos): ");
+            Peso = int.Parse(Console.ReadLine());
         }
     }
 }
