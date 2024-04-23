@@ -5,35 +5,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solucion
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            string contraseña = 'admin';
-
-<<<<<<< HEAD
+namespace Solucion {
+    internal class Program {
+        static void Main(string[] args) {
+            MaquinaVending maquinaVending = new MaquinaVending();
             int opcion = 0;
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine("|           Máquina Vending UFV           |");
-            Console.WriteLine("|-----------------------------------------|"); 
-            Console.WriteLine("|  Opciones:                              |");
-            Console.WriteLine("|-----------------------------------------|");
-            Console.WriteLine("| 1. Comprar productos                    |");
-            Console.WriteLine("| 2. Mostrar la información del producto  |");
-            Console.WriteLine("| 3. Carga individual del producto        |");
-            Console.WriteLine("| 4. Carga completa de productos          |");
-            Console.WriteLine("| 5. Salir                                |");
-            Console.WriteLine("|-----------------------------------------|");
-            Console.WriteLine("| Introduzca la opción que desee realizar |");
-            Console.WriteLine("------------------------------------------");
-            opcion = int.Parse(Console.ReadLine());
-=======
-            do
-            {
-                int opcion = 0;
-                Console.WriteLine("-------------------------------------------");
+            do {
+
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("|           Máquina Vending UFV           |");
                 Console.WriteLine("|-----------------------------------------|");
                 Console.WriteLine("|  Opciones:                              |");
@@ -45,58 +24,56 @@ namespace Solucion
                 Console.WriteLine("| 5. Salir                                |");
                 Console.WriteLine("|-----------------------------------------|");
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
-                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine("------------------------------------------");
                 opcion = int.Parse(Console.ReadLine());
->>>>>>> 14f1c9c26b73997a2612dca88b9fc3f941ec9945
 
-                switch (opcion)
-                {
+                switch (opcion) {
                     case 1:
-                        BuyProducts(); // Comprar
+                        maquinaVending.BuyProducts(); // Comprar
                         break;
                     case 2:
-                        ProductInfo(int Id); // Información
+                        maquinaVending.ProductosDisponibles();
+                        maquinaVending.ProductInfo(); // Información
                         break;
                     case 3:
-                        if (ContrasenaValida())
+                        if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
                         {
-                            IndividualProductLoading();// Carga individua
+                            maquinaVending.IndividualProductLoading();// Carga individua
                         }
-                        else
-                        {
-                            Console.WriteLine("La contraseña es incorrecta");
+                        else {
+                            Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
                         }
                         break;
                     case 4:
-                        if (ContrasenaValida())
-                        {
-                            FullProductLoading();// Carga completa
+                        if (ContrasenaValida()) {
+                            maquinaVending.FullProductLoading();// Carga completa
                         }
-                        else
-                        {
-                            Console.WriteLine("La contraseña es incorrecta");
+                        else {
+                            Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
                         }
                         break;
                     case 5:
-                        Exit(); // Exit
+                        maquinaVending.Exit(); // Exit
                         break;
                     default:
                         break;
                 }
-            } while (option != 5);
-           
-
+            } while (opcion != 5);
         }
 
-        public bool ContrasenaValida()
-        {
-            bool valido = false; 
+        public static bool ContrasenaValida() {
+            string contrasena = "admin";
+            bool valido = false;
+
             Console.WriteLine("Introduzca la contraseña: ");
-            string contraseñaIntroducida = Console.ReadLine();
-            if (contraseñaIntroducida == contraseña)
-            {
-                valido = true; 
+            string contrasenaIntroducida = Console.ReadLine();
+
+            if (contrasenaIntroducida == contrasena) {
+                valido = true;
             }
-            return valido; 
+
+            return valido;
         }
+
+    }
 }
