@@ -49,17 +49,19 @@ namespace Solucion {
 
                     bool existe = false;
                     Producto productoTemp = null;
-
                     Console.WriteLine("Introduce el nombre del producto: ");
                     string nombre = Console.ReadLine();
 
-                    foreach (Producto producto in listaProductos) {
-                        if (producto.Nombre == nombre) {
+                    foreach (Producto producto in listaProductos)
+                    {
+                        if (producto.Nombre == nombre)
+                        {
                             productoTemp = producto;
                             existe = true;
                         }
                     }
-                    if (!existe) {
+                    
+                    if (!existe && listaProductos != null) {
                         SolicitarDetalles();
 
                         switch (opcion) {

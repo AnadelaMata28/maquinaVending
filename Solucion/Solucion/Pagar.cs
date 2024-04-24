@@ -11,21 +11,20 @@ namespace Solucion {
         public string PagarEfectivo(double precioTotal) //FALTA PONER MENSAJE
         {
             double dinero = 0;
-            double cambio = 0;
+
+            Console.WriteLine($"Cantidad a pagar {precioTotal}");
             do { 
-                Console.WriteLine("Introduzca la cantidad requerida en céntimos por favor: ");
+                Console.WriteLine("Introduzca la cantidad requerida en euros por favor: ");
                 dinero = double.Parse(Console.ReadLine());
             } while (dinero < precioTotal);
 
-            if(dinero > precioTotal) {
-                cambio = precioTotal - dinero;
-                return $"Su vuelta son {cambio} céntimos.";
-            }
-            return $"mensaje";
+            DevolverDinero (precioTotal, dinero);
+            return $"Pagado con éxito";
 
         }
 
         public void PagarTarjeta(double precioTotal) {
+            Console.WriteLine($"Cantidad a pagar {precioTotal}"); 
             Console.WriteLine("Número de tarjeta: ");
             int numeroTarjeta = int.Parse(Console.ReadLine());
             Console.WriteLine("Fecha de caducidad: ");
@@ -34,6 +33,22 @@ namespace Solucion {
             int codigoSeguridad = int.Parse(Console.ReadLine());
             Console.ReadKey();
             Console.WriteLine("Pagando....");
+        }
+
+        public void DevolverDinero(double precioTotal, double dinero)
+        {
+            double cambio = 0;
+
+            if (dinero > precioTotal)
+            {
+                cambio = precioTotal - dinero;
+
+                double centimos = (cambio*100)% 100;
+                double euros = cambio - (centimos/100); 
+                 Console.WriteLine($"Su vuelta son {centimos} centimos y {euros} euros.");
+
+                Console.WriteLine($"Su vuelta son {cambio} euros.");
+            }
         }
     }
 }

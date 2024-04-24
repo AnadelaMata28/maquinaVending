@@ -117,51 +117,8 @@ namespace Solucion {
         }
 
         public void IndividualProductLoading() {
-            char separator = ';';
-            string path = "example_vending_file_practical_work_i.csv";
-            StreamReader archivo = File.OpenText(path);
-            string header = archivo.ReadLine();
-
-            // Separamos por los títulos
-            string[] names = header.Split(separator);
-            string line = "";
-
-            int opcion = 0;
-
-            do {
-                Console.WriteLine("Si desea añadir existencias a los productos existentes, pulse 1.");
-                Console.WriteLine("Si desea añadir un nuevo tipo de producto, pulse 2.");
-                opcion = int.Parse(Console.ReadLine());
-
-                switch (opcion) {
-                    case 1:
-                        while ((line = archivo.ReadLine()) != null) {
-                            string[] datos = line.Split(separator);
-                            foreach (Producto producto in listaProductos) {
-                                if (datos[1] == producto.Nombre) {
-                                    datos[0] = datos[0] + 1;
-                                    Console.WriteLine("Producto repuesto. Muchas gracias!");
-                                }
-                                else {
-                                    Console.WriteLine("Producto no encontrado, seleccione otro producto.");
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        foreach (Producto producto in listaProductos) {
-                            if (listaProductos.Count() < 12) {
-                                producto.AddProducto(listaProductos);
-                            }
-                            else {
-                                Console.WriteLine("Lo siento, no hay ranuras disponibles. Elija otra opción.");
-                            }
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            } while (opcion != 2);
+            Producto producto =  new Producto();
+            producto.AddProducto(listaProductos);
         }
 
         public void Exit() {
