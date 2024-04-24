@@ -18,6 +18,11 @@ namespace Solucion {
             Id = id;
         }
 
+        public void BuyProducts() 
+        {
+            double precioTotal = 0;
+            Pagar pagar = null;
+            Producto productoTemp = null;
         public void BuyProducts() {
             double precioTotal = 0;
             Pagar pagar = null;
