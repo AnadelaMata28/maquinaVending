@@ -18,11 +18,7 @@ namespace Solucion {
             Id = id;
         }
 
-        public void BuyProducts() 
-        {
-            double precioTotal = 0;
-            Pagar pagar = null;
-            Producto productoTemp = null;
+        
         public void BuyProducts() {
             double precioTotal = 0;
             Pagar pagar = null;
@@ -97,7 +93,7 @@ namespace Solucion {
         }
 
         public void FullProductLoading() {
-            string separator = ";";
+            char separator = ';';
 
             // NO SÉ SI ES UNA BURRADA PERO LO HE INCORPORADO ASI Y SE HA PUESTO COMO SI FUSE UNA CLASE
             // PERO NO DEL TODO
@@ -109,11 +105,11 @@ namespace Solucion {
             string[] names = header.Split(separator);
             string line = "";
 
-            while ((line = StreamReader.ReadLine()) != null) {
+            while ((line = archivo.ReadLine()) != null) {
                 string[] datos = line.Split(separator);
                 foreach (Producto producto in listaProductos) {
                     if (datos[1] == producto.Nombre) {
-                        path.Add(producto);
+                        listaProductos.Add(producto);
                     }
                 }
             }
@@ -121,7 +117,7 @@ namespace Solucion {
         }
 
         public void IndividualProductLoading() {
-            string separator = ";";
+            char separator = ';';
             string path = "example_vending_file_practical_work_i.csv";
             StreamReader archivo = File.OpenText(path);
             string header = archivo.ReadLine();
@@ -139,7 +135,7 @@ namespace Solucion {
 
                 switch (opcion) {
                     case 1:
-                        while ((line = StreamReader.ReadLine()) != null) {
+                        while ((line = archivo.ReadLine()) != null) {
                             string[] datos = line.Split(separator);
                             foreach (Producto producto in listaProductos) {
                                 if (datos[1] == producto.Nombre) {
