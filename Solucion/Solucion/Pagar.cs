@@ -10,11 +10,11 @@ namespace Solucion {
 
         public string PagarEfectivo(double precioTotal) //FALTA PONER MENSAJE
         {
-            int dinero = 0;
-            int cambio = 0;
+            double dinero = 0;
+            double cambio = 0;
             do { 
                 Console.WriteLine("Introduzca la cantidad requerida en céntimos por favor: ");
-                dinero = int.Parse(Console.ReadLine());
+                dinero = double.Parse(Console.ReadLine());
             } while (dinero < precioTotal);
 
             if(dinero > precioTotal) {
