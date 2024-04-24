@@ -104,9 +104,9 @@ namespace Solucion {
             string[] names = header.Split(separator);
             string line = "";
 
-            while((line = StreamReader.ReadLine()) != null) {
+            while ((line = StreamReader.ReadLine()) != null) {
                 string[] datos = line.Split(separator);
-                foreach(Producto producto in listaProductos) {
+                foreach (Producto producto in listaProductos) {
                     if (datos[1] == producto.Nombre) {
                         path.Add(producto);
                     }
@@ -126,7 +126,7 @@ namespace Solucion {
             string line = "";
 
             int opcion = 0;
-          
+
             do {
                 Console.WriteLine("Si desea añadir existencias a los productos existentes, pulse 1.");
                 Console.WriteLine("Si desea añadir un nuevo tipo de producto, pulse 2.");
@@ -156,7 +156,7 @@ namespace Solucion {
                                 Console.WriteLine("Lo siento, no hay ranuras disponibles. Elija otra opción.");
                             }
                         }
-                    break;
+                        break;
                     default:
                         break;
                 }
