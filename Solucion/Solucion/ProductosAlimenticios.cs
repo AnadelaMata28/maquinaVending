@@ -21,8 +21,8 @@ namespace Solucion {
             return base.MostrarDetalles() + $"\n\tInformación nutricional: {InformacionNutricional}";
         }
 
-        public override void SolicitarDetalles() {
-            base.SolicitarDetalles();
+        public override void SolicitarDetalles(List<Producto> listaProductos) {
+            base.SolicitarDetalles(listaProductos);
 
             Console.Write("Información nutricional: ");
             InformacionNutricional = Console.ReadLine();

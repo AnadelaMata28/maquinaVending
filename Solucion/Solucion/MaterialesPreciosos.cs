@@ -23,8 +23,8 @@ namespace Solucion {
         public override string MostrarDetalles() {
             return base.MostrarDetalles() + $"\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso}";
         }
-        public override void SolicitarDetalles() {
-            base.SolicitarDetalles();
+        public override void SolicitarDetalles(List<Producto> listaProductos) {
+            base.SolicitarDetalles(listaProductos);
 
             Console.Write("Tipo de material: ");
             TipoMaterial = Console.ReadLine();

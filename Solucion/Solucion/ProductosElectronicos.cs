@@ -27,8 +27,8 @@ namespace Solucion {
             return base.MostrarDetalles() + $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
         }
 
-        public override void SolicitarDetalles() {
-            base.SolicitarDetalles();
+        public override void SolicitarDetalles(List<Producto> listaProductos) {
+            base.SolicitarDetalles(listaProductos);
 
             Console.Write("Tipos de materiales: ");
             TiposMateriales = Console.ReadLine();

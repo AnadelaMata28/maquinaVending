@@ -45,39 +45,25 @@ namespace Solucion {
                 Console.Write("Opción: ");
                 try {
                     opcion = int.Parse(Console.ReadLine());
-                    Console.Clear();
-
-                    bool existe = false;
-                    Producto productoTemp = null;
-                    Console.WriteLine("Introduce el nombre del producto: ");
-                    string nombre = Console.ReadLine();
-
-                    foreach (Producto producto in listaProductos)
-                    {
-                        if (producto.Nombre == nombre)
-                        {
-                            productoTemp = producto;
-                            existe = true;
-                        }
-                    }
+                    Console.Clear();                 
                     
-                    if (!existe && listaProductos != null) {
-                        SolicitarDetalles();
+                    if (listaProductos != null) {
+                        SolicitarDetalles(listaProductos);
 
                         switch (opcion) {
                             case 1:
                                 MaterialesPreciosos mp = new MaterialesPreciosos(listaProductos.Count);
-                                mp.SolicitarDetalles();
+                                mp.SolicitarDetalles(listaProductos);
                                 listaProductos.Add(mp);
                                 break;
                             case 2:
                                 ProductosAlimenticios pa = new ProductosAlimenticios(listaProductos.Count);
-                                pa.SolicitarDetalles();
+                                pa.SolicitarDetalles(listaProductos);
                                 listaProductos.Add(pa);
                                 break;
                             case 3:
                                 ProductosElectronicos pe = new ProductosElectronicos(listaProductos.Count);
-                                pe.SolicitarDetalles();
+                                pe.SolicitarDetalles(listaProductos);
                                 listaProductos.Add(pe);
                                 break; ;
                             case 4: //Salir
@@ -101,16 +87,42 @@ namespace Solucion {
             } while (opcion != 4);
         }
 
-        public virtual void SolicitarDetalles() {
+        public virtual void SolicitarDetalles(List<Producto> listaProductos) {
             Console.Clear();
             Console.WriteLine("  --- Solicitando detalles ---  ");
             Console.WriteLine();
+
+            Console.WriteLine("Introduce el nombre del producto: ");
+            string nombre = Console.ReadLine();
+            if(!ExisteProducto(listaProductos, nombre))
+            {
+                Nombre = nombre;
+            }
             Console.Write("Unidades: ");
             Unidades = int.Parse(Console.ReadLine());
             Console.Write("Precio unitario: ");
             PrecioUnitario = int.Parse(Console.ReadLine());
             Console.Write("Descripción: ");
             Descripcion = Console.ReadLine();
+        }
+        public bool ExisteProducto(List <Producto> listaProductos, string nombre)
+        {
+            bool existe = false;
+            Producto productoTemp = null;
+
+            if (listaProductos != null) {
+
+                foreach (Producto producto in listaProductos)
+                {
+                    if (producto.Nombre == nombre)
+                    {
+                        productoTemp = producto;
+                        existe = true;
+                    }
+                }
+            }
+
+            return existe;
         }
     }
 }
