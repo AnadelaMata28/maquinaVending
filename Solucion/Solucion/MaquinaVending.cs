@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Solucion {
-    internal class MaquinaVending {
+    internal class MaquinaVending
+    {
 
-        List<Producto> listaProductos = new List<Producto> ();
+        List<Producto> listaProductos = new List<Producto>();
 
         public MaquinaVending() { }
-        public void BuyProducts() {
+        public void BuyProducts()
+        {
             double precioTotal = 0;
             Pagar pagar = null;
             Producto productoTemp = null;
@@ -28,16 +30,20 @@ namespace Solucion {
             Console.WriteLine("Desea comprar algún otro producto?");
             Console.Write("En caso de no querer, pulse 0. Si desea comprar más, pulse 1: ");
             opcion = int.Parse(Console.ReadLine());
-            do {
-                switch (opcion) {
+            do
+            {
+                switch (opcion)
+                {
                     case 0:
                         int option = 0;
-                        do {
+                        do
+                        {
                             Console.WriteLine("Método para pagar: ");
                             Console.WriteLine("1. Efectivo");
                             Console.WriteLine("2. Tarjeta");
 
-                            switch (option) {
+                            switch (option)
+                            {
                                 case 1:
                                     pagar.PagarEfectivo(precioTotal);
                                     break;
@@ -52,18 +58,22 @@ namespace Solucion {
                     case 1:
                         Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
                         int respuesta = int.Parse(Console.ReadLine());
-                        if (respuesta == 0) {
+                        if (respuesta == 0)
+                        {
                             BuyProducts();
                         }
 
-                        else if (respuesta == 1) {
+                        else if (respuesta == 1)
+                        {
                             int option2 = 0;
-                            do {
+                            do
+                            {
                                 Console.WriteLine("Método para pagar: ");
                                 Console.WriteLine("1. Efectivo");
                                 Console.WriteLine("2. Tarjeta");
 
-                                switch (option2) {
+                                switch (option2)
+                                {
                                     case 1:
                                         pagar.PagarEfectivo(precioTotal);
                                         break;
@@ -81,12 +91,14 @@ namespace Solucion {
             } while (opcion != 1);
         }
 
-        public string ProductInfo() {
+        public string ProductInfo()
+        {
             Producto producto = ElegirProducto(listaProductos);
             return $"{producto.MostrarDetalles()}";
         }
 
-        public void FullProductLoading() {
+        public void FullProductLoading()
+        {
             char separator = ';';
 
             // NO SÉ SI ES UNA BURRADA PERO LO HE INCORPORADO ASI Y SE HA PUESTO COMO SI FUSE UNA CLASE
@@ -99,10 +111,13 @@ namespace Solucion {
             string[] names = header.Split(separator);
             string line = "";
 
-            while ((line = archivo.ReadLine()) != null) {
+            while ((line = archivo.ReadLine()) != null)
+            {
                 string[] datos = line.Split(separator);
-                foreach (Producto producto in listaProductos) {
-                    if (datos[1] == producto.Nombre) {
+                foreach (Producto producto in listaProductos)
+                {
+                    if (datos[1] == producto.Nombre)
+                    {
                         listaProductos.Add(producto);
                     }
                 }
@@ -110,29 +125,36 @@ namespace Solucion {
             archivo.Close();
         }
 
-        public void IndividualProductLoading() {
-            Producto producto =  new Producto();
+        public void IndividualProductLoading()
+        {
+            Producto producto = new Producto();
             producto.AddProducto(listaProductos);
         }
 
-        public void Exit() {
+        public void Exit()
+        {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
         }
 
-        public void ProductosDisponibles() {
-            foreach (Producto producto in listaProductos) {
+        public void ProductosDisponibles()
+        {
+            foreach (Producto producto in listaProductos)
+            {
                 Console.WriteLine(producto.MostrarDetalles());
             }
         }
-        public Producto ElegirProducto(List<Producto> listaProductos) {
+        public Producto ElegirProducto(List<Producto> listaProductos)
+        {
             Producto productoTemp = null;
 
             Console.WriteLine("Introduce el Id del producto que deseas: ");
             int id = int.Parse(Console.ReadLine());
 
-            foreach (Producto producto in listaProductos) {
-                if (producto.Id == id) {
+            foreach (Producto producto in listaProductos)
+            {
+                if (producto.Id == id)
+                {
                     productoTemp = producto;
                 }
             }
