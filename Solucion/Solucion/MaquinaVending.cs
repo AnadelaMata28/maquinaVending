@@ -9,16 +9,10 @@ using System.Threading.Tasks;
 
 namespace Solucion {
     internal class MaquinaVending {
-        public int Id { get; set; }
-        List<Producto> listaProductos;
+
+        List<Producto> listaProductos = new List<Producto> ();
 
         public MaquinaVending() { }
-
-        public MaquinaVending(int id) {
-            Id = id;
-        }
-
-        
         public void BuyProducts() {
             double precioTotal = 0;
             Pagar pagar = null;

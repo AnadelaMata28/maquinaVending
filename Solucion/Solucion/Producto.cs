@@ -27,7 +27,7 @@ namespace Solucion {
         }
 
         public virtual string MostrarDetalles() {
-            return $"Nombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}";
+            return $"\n\tId: {Id}\n\tNombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}";
         }
 
         public void AddProducto(List<Producto> listaProductos) {
@@ -45,34 +45,35 @@ namespace Solucion {
                 Console.Write("Opción: ");
                 try {
                     opcion = int.Parse(Console.ReadLine());
-                    Console.Clear();                 
-                    
-                    if (listaProductos != null) {
-                        SolicitarDetalles(listaProductos);
+                    Console.Clear();
 
-                        switch (opcion) {
-                            case 1:
-                                MaterialesPreciosos mp = new MaterialesPreciosos(listaProductos.Count);
-                                mp.SolicitarDetalles(listaProductos);
-                                listaProductos.Add(mp);
-                                break;
-                            case 2:
-                                ProductosAlimenticios pa = new ProductosAlimenticios(listaProductos.Count);
-                                pa.SolicitarDetalles(listaProductos);
-                                listaProductos.Add(pa);
-                                break;
-                            case 3:
-                                ProductosElectronicos pe = new ProductosElectronicos(listaProductos.Count);
-                                pe.SolicitarDetalles(listaProductos);
-                                listaProductos.Add(pe);
-                                break; ;
-                            case 4: //Salir
-                                Console.WriteLine("Saliendo...");
-                                break;
-                            default:
-                                Console.WriteLine("Opción no válida");
-                                break;
-                        }
+                    if (listaProductos == null)
+                    {
+                        listaProductos = new List<Producto>();
+                    }
+
+                    switch (opcion) {
+                    case 1:
+                        MaterialesPreciosos mp = new MaterialesPreciosos(listaProductos.Count);
+                        mp.SolicitarDetalles(listaProductos);
+                        listaProductos.Add(mp);
+                        break;
+                    case 2:
+                        ProductosAlimenticios pa = new ProductosAlimenticios(listaProductos.Count);
+                        pa.SolicitarDetalles(listaProductos);
+                        listaProductos.Add(pa);
+                        break;
+                    case 3:
+                        ProductosElectronicos pe = new ProductosElectronicos(listaProductos.Count);
+                        pe.SolicitarDetalles(listaProductos);
+                        listaProductos.Add(pe);
+                        break; ;
+                    case 4: //Salir
+                        Console.WriteLine("Saliendo...");
+                        break;
+                    default:
+                        Console.WriteLine("Opción no válida");
+                        break;
                     }
                 }
                 catch (FormatException) {
@@ -92,18 +93,27 @@ namespace Solucion {
             Console.WriteLine("  --- Solicitando detalles ---  ");
             Console.WriteLine();
 
-            Console.WriteLine("Introduce el nombre del producto: ");
+            Console.Write("Introduce el nombre del producto: ");
             string nombre = Console.ReadLine();
             if(!ExisteProducto(listaProductos, nombre))
             {
                 Nombre = nombre;
+                Console.Write("Unidades: ");
+                Unidades = int.Parse(Console.ReadLine());
+                Console.Write("Precio unitario (en euros): ");
+                PrecioUnitario = int.Parse(Console.ReadLine());
+                Console.Write("Descripción: ");
+                Descripcion = Console.ReadLine();
             }
-            Console.Write("Unidades: ");
-            Unidades = int.Parse(Console.ReadLine());
-            Console.Write("Precio unitario: ");
-            PrecioUnitario = int.Parse(Console.ReadLine());
-            Console.Write("Descripción: ");
-            Descripcion = Console.ReadLine();
+            else
+            {
+                Console.WriteLine("Este producto ya existe.");
+                Console.Write("Introduzca las unidades que quieres añadir: ");
+                Unidades += int.Parse(Console.ReadLine());
+
+                return;
+            }
+            
         }
         public bool ExisteProducto(List <Producto> listaProductos, string nombre)
         {
