@@ -11,12 +11,13 @@ namespace Solucion {
 
         public double Peso { get; set; }
 
+        public MaterialesPreciosos() { }
         public MaterialesPreciosos(int count) {
             Id = count + 1;
         }
 
-        public MaterialesPreciosos(string nombre, int unidades, double precioUnitario, string descripcion, string tipoMaterial, double peso)
-            : base(nombre, unidades, precioUnitario, descripcion) {
+        public MaterialesPreciosos(int id,string nombre, int unidades, double precioUnitario, string descripcion, string tipoMaterial, double peso)
+            : base(id, nombre, unidades, precioUnitario, descripcion) {
             TipoMaterial = tipoMaterial;
             Peso = peso;
         }

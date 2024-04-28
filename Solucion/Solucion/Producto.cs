@@ -18,8 +18,9 @@ namespace Solucion {
         public string Descripcion { get; set; }
 
         public Producto() { }
-
-        public Producto(string nombre, int unidades, double precioUnitario, string descripcion) {
+     
+        public Producto(int id, string nombre, int unidades, double precioUnitario, string descripcion) {
+            Id = id;
             Nombre = nombre;
             Unidades = unidades;
             PrecioUnitario = precioUnitario;

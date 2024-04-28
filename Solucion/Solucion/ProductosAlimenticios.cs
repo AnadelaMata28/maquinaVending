@@ -8,12 +8,14 @@ namespace Solucion {
     internal class ProductosAlimenticios : Producto {
         public string InformacionNutricional { get; set; }
 
-        public ProductosAlimenticios(int count) {
+        public ProductosAlimenticios() { }
+        public ProductosAlimenticios(int count)
+        {
             Id = count + 1;
         }
 
-        public ProductosAlimenticios(string nombre, int unidades, double precioUnitario, string descripcion, string informacionNutricional)
-            : base(nombre, unidades, precioUnitario, descripcion) {
+        public ProductosAlimenticios(int id, string nombre, int unidades, double precioUnitario, string descripcion, string informacionNutricional)
+            : base(id, nombre, unidades, precioUnitario, descripcion) {
             InformacionNutricional = informacionNutricional;
         }
 

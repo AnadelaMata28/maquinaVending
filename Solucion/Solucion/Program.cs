@@ -10,8 +10,8 @@ namespace Solucion {
     internal class Program {
         static void Main(string[] args) {
             MaquinaVending maquinaVending = new MaquinaVending();
-
-            char separator = ';';
+            maquinaVending.CargaCompletaProducto(0);
+            /*char separator = ';';
             string archivoInicial = "example_vending_file_practical_work_i.csv";
             if (File.Exists(archivoInicial))
             {
@@ -39,7 +39,7 @@ namespace Solucion {
             else
             {
                 Console.WriteLine("El archivo no existe"); 
-            }
+            }*/
 
             int opcion = 0;
             do {
@@ -58,8 +58,8 @@ namespace Solucion {
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("------------------------------------------");
 
-                try
-                {
+                /*try
+                {*/
                     opcion = int.Parse(Console.ReadLine());
                     switch (opcion)
                     {
@@ -83,7 +83,7 @@ namespace Solucion {
                         case 4:
                             if (ContrasenaValida())
                             {
-                                maquinaVending.CargaCompletaProducto();// Carga completa
+                                maquinaVending.CargaCompletaProducto(1);// Carga completa
                             }
                             else
                             {
@@ -96,15 +96,15 @@ namespace Solucion {
                         default:
                             break;
                     }
-                }
-                catch (FormatException)
+               // }
+                /*catch (FormatException)
                 {
                     Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
-                }
-                catch (Exception ex)
+                }*/
+                /*catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }
+                }*/
                 Console.WriteLine("Presiona una tecla para continuar...");
                 Console.ReadKey();
                 Console.Clear(); 

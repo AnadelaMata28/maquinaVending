@@ -109,13 +109,24 @@ namespace Solucion {
         public string InfoProducto()
         {
             Producto producto = ElegirProducto(listaProductos);
+            if(producto == null)
+            {
+                return $"Error eligiendo producto";
+            }
             return $"{producto.MostrarDetalles()}";
         }
 
-        public void CargaCompletaProducto()
+        public void CargaCompletaProducto(int eleccion) //si eleccion es 0 se mete el archivo de inicio
         {
             char separator = ';';
-            string path = "example_vending_file_practical_work_i.csv"; //ruta del archivo
+            string path;
+            if(eleccion == 0) {
+                path = "..\\..\\..\\..\\Archivos\\example_vending_file_practical_work_i.csv"; //ruta del archivo
+            }
+            else
+            {
+                path = "..\\..\\..\\..\\Archivos\\archivo_vending.csv"; //ruta del archivo
+            }
 
             try //controlar excepciones
             {
@@ -129,9 +140,32 @@ namespace Solucion {
                     while ((line = archivo.ReadLine()) != null)
                     {
                         string[] datos = line.Split(separator);
-                        Producto nuevoProducto = new Producto(); //crear un nuevo producto para los datos leídos
-                        nuevoProducto.Nombre = datos[0];  //asignamos el nombre del producto al primer elemento de array de datos
-                        listaProductos.Add(nuevoProducto); //añadir producto a la lista
+
+                        if (datos[0] == "1") 
+                        {
+                            MaterialesPreciosos mp = new MaterialesPreciosos(listaProductos.Count, datos[1], int.Parse(datos[2]), double.Parse(datos[3]), datos[4], datos[5], double.Parse(datos[6]));
+                            listaProductos.Add(mp);
+                        }
+                        else if (datos[0] == "2")
+                        {
+                            ProductosAlimenticios pa = new ProductosAlimenticios(listaProductos.Count, datos[1], int.Parse(datos[2]), double.Parse(datos[3]), datos[4], datos[5]);
+                            listaProductos.Add(pa);
+                        }
+                        else
+                        {
+                            bool datos1 = false;
+                            bool datos2 = false;
+                            if (datos[6] == "1")
+                            {
+                                datos1 = true;   
+                            }
+                            else if (datos[7] == "1")
+                            {
+                                datos2 = true;
+                            }
+                            ProductosElectronicos pe = new ProductosElectronicos(listaProductos.Count, datos[1], int.Parse(datos[2]), double.Parse(datos[3]), datos[4], datos[5], datos1, datos2);
+                            listaProductos.Add(pe);
+                        }
                     }
                 }
             }
