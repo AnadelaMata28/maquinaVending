@@ -27,37 +27,55 @@ namespace Solucion {
                 Console.WriteLine("------------------------------------------");
                 opcion = int.Parse(Console.ReadLine());
 
-                switch (opcion) {
-                    case 1:
-                        maquinaVending.ComprarProducto(); // Comprar
-                        break;
-                    case 2:
-                        maquinaVending.ProductosDisponibles();
-                        maquinaVending.InfoProducto(); // Información
-                        break;
-                    case 3:
-                        if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
-                        {
-                            maquinaVending.CargaIndividualProducto();// Carga individua
-                        }
-                        else {
-                            Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
-                        }
-                        break;
-                    case 4:
-                        if (ContrasenaValida()) {
-                            maquinaVending.CargaCompletaProducto();// Carga completa
-                        }
-                        else {
-                            Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
-                        }
-                        break;
-                    case 5:
-                        maquinaVending.Salir(); // Exit
-                        break;
-                    default:
-                        break;
+                try
+                {
+                    switch (opcion)
+                    {
+                        case 1:
+                            maquinaVending.ComprarProducto(); // Comprar
+                            break;
+                        case 2:
+                            maquinaVending.ProductosDisponibles();
+                            maquinaVending.InfoProducto(); // Información
+                            break;
+                        case 3:
+                            if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
+                            {
+                                maquinaVending.CargaIndividualProducto();// Carga individua
+                            }
+                            else
+                            {
+                                Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
+                            }
+                            break;
+                        case 4:
+                            if (ContrasenaValida())
+                            {
+                                maquinaVending.CargaCompletaProducto();// Carga completa
+                            }
+                            else
+                            {
+                                Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
+                            }
+                            break;
+                        case 5:
+                            maquinaVending.Salir(); // Exit
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                Console.WriteLine("Presiona una tecla para continuar...");
+                Console.ReadKey();
+
             } while (opcion != 5);
         }
 
