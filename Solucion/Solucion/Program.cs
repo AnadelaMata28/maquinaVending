@@ -25,10 +25,10 @@ namespace Solucion {
                 Console.WriteLine("|-----------------------------------------|");
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("------------------------------------------");
-                opcion = int.Parse(Console.ReadLine());
 
                 try
                 {
+                    opcion = int.Parse(Console.ReadLine());
                     switch (opcion)
                     {
                         case 1:
@@ -75,6 +75,7 @@ namespace Solucion {
                 }
                 Console.WriteLine("Presiona una tecla para continuar...");
                 Console.ReadKey();
+                Console.Clear(); 
 
             } while (opcion != 5);
         }

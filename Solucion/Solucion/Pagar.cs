@@ -10,17 +10,23 @@ namespace Solucion {
 
         public string PagarEfectivo(double precioTotal) //FALTA PONER MENSAJE
         {
-            double dinero = 0;
+            try
+            {
+                double dinero = 0;
 
-            Console.WriteLine($"Cantidad a pagar {precioTotal}");
-            do { 
-                Console.WriteLine("Introduzca la cantidad requerida en euros por favor: ");
-                dinero = double.Parse(Console.ReadLine());
-            } while (dinero < precioTotal);
+                Console.WriteLine($"Cantidad a pagar {precioTotal}");
+                do
+                {
+                    Console.WriteLine("Introduzca la cantidad requerida en euros por favor: ");
+                    dinero = double.Parse(Console.ReadLine());
+                } while (dinero < precioTotal);
 
-            DevolverDinero (precioTotal, dinero);
-            return $"Pagado con éxito";
-
+                DevolverDinero(precioTotal, dinero);
+                return $"Pagado con éxito";
+            }
+            catch(FormatException) {
+                return "Error: Opción inválida. Por favor, ingrese un número válido.";
+            }
         }
 
         public void PagarTarjeta(double precioTotal) {
