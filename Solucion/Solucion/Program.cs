@@ -29,16 +29,16 @@ namespace Solucion {
 
                 switch (opcion) {
                     case 1:
-                        maquinaVending.BuyProducts(); // Comprar
+                        maquinaVending.ComprarProducto(); // Comprar
                         break;
                     case 2:
                         maquinaVending.ProductosDisponibles();
-                        maquinaVending.ProductInfo(); // Información
+                        maquinaVending.InfoProducto(); // Información
                         break;
                     case 3:
                         if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
                         {
-                            maquinaVending.IndividualProductLoading();// Carga individua
+                            maquinaVending.CargaIndividualProducto();// Carga individua
                         }
                         else {
                             Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
@@ -46,14 +46,14 @@ namespace Solucion {
                         break;
                     case 4:
                         if (ContrasenaValida()) {
-                            maquinaVending.FullProductLoading();// Carga completa
+                            maquinaVending.CargaCompletaProducto();// Carga completa
                         }
                         else {
                             Console.WriteLine("Lo siento, la contraseña es incorrecta. Introduzca otra vez o seleccione otra opción.");
                         }
                         break;
                     case 5:
-                        maquinaVending.Exit(); // Exit
+                        maquinaVending.Salir(); // Exit
                         break;
                     default:
                         break;

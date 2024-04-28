@@ -30,7 +30,7 @@ namespace Solucion {
             return $"\n\tId: {Id}\n\tNombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}";
         }
 
-        public void AddProducto(List<Producto> listaProductos) {
+        public void AnadirProducto(List<Producto> listaProductos) {
             int opcion = 0;
             do {
                 Console.Clear();

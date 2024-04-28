@@ -14,7 +14,7 @@ namespace Solucion {
         List<Producto> listaProductos = new List<Producto>();
 
         public MaquinaVending() { }
-        public void BuyProducts()
+        public void ComprarProducto()
         {
             double precioTotal = 0;
             Pagar pagar = null;
@@ -22,7 +22,7 @@ namespace Solucion {
 
             ProductosDisponibles();
 
-            Console.WriteLine(ProductInfo());
+            Console.WriteLine(InfoProducto());
 
             precioTotal += productoTemp.PrecioUnitario;
 
@@ -53,14 +53,14 @@ namespace Solucion {
                             }
                         } while (option != 2);
 
-                        Exit();
+                        Salir();
                         break;
                     case 1:
                         Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
                         int respuesta = int.Parse(Console.ReadLine());
                         if (respuesta == 0)
                         {
-                            BuyProducts();
+                            ComprarProducto();
                         }
 
                         else if (respuesta == 1)
@@ -83,7 +83,7 @@ namespace Solucion {
                                 }
                             } while (option2 != 2);
                         }
-                        Exit();
+                        Salir();
                         break;
                     default:
                         break;
@@ -91,13 +91,13 @@ namespace Solucion {
             } while (opcion != 1);
         }
 
-        public string ProductInfo()
+        public string InfoProducto()
         {
             Producto producto = ElegirProducto(listaProductos);
             return $"{producto.MostrarDetalles()}";
         }
 
-        public void FullProductLoading()
+        public void CargaCompletaProducto()
         {
             char separator = ';';
 
@@ -125,13 +125,13 @@ namespace Solucion {
             archivo.Close();
         }
 
-        public void IndividualProductLoading()
+        public void CargaIndividualProducto()
         {
             Producto producto = new Producto();
-            producto.AddProducto(listaProductos);
+            producto.AnadirProducto(listaProductos);
         }
 
-        public void Exit()
+        public void Salir()
         {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
