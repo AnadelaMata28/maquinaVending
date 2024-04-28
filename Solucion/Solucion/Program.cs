@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -9,6 +10,37 @@ namespace Solucion {
     internal class Program {
         static void Main(string[] args) {
             MaquinaVending maquinaVending = new MaquinaVending();
+
+            char separator = ';';
+            string archivoInicial = "example_vending_file_practical_work_i.csv";
+            if (File.Exists(archivoInicial))
+            {
+                try
+                {
+                    string[] lineas = File.ReadAllLines(archivoInicial); //Leer las lineas del archivo
+
+                    foreach (string line in lineas)
+                    {
+
+                        string[] datos = line.Split(separator);
+                        string id = datos[0];
+                        string nombre = datos[1];
+                        int unidades = int.Parse(datos[2]);
+                        double precioUnitario = double.Parse(datos[3]);
+                        string descripcion = datos[4];
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al leer el archivo: {ex.Message}");   
+                }
+            }
+            else
+            {
+                Console.WriteLine("El archivo no existe"); 
+            }
+
             int opcion = 0;
             do {
 
@@ -81,17 +113,26 @@ namespace Solucion {
         }
 
         public static bool ContrasenaValida() {
-            string contrasena = "admin";
-            bool valido = false;
+            try
+            {
+                string contrasena = "admin";
+                bool valido = false;
 
-            Console.WriteLine("Introduzca la contraseña: ");
-            string contrasenaIntroducida = Console.ReadLine();
+                Console.WriteLine("Introduzca la contraseña: ");
+                string contrasenaIntroducida = Console.ReadLine();
 
-            if (contrasenaIntroducida == contrasena) {
-                valido = true;
+                if (contrasenaIntroducida == contrasena)
+                {
+                    valido = true;
+                }
+
+                return valido;
             }
-
-            return valido;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado: {ex.Message}");
+                return false; 
+            }
         }
     }
 }

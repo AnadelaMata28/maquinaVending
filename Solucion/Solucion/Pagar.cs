@@ -30,15 +30,29 @@ namespace Solucion {
         }
 
         public void PagarTarjeta(double precioTotal) {
-            Console.WriteLine($"Cantidad a pagar {precioTotal}"); 
-            Console.WriteLine("Número de tarjeta: ");
-            int numeroTarjeta = int.Parse(Console.ReadLine());
-            Console.WriteLine("Fecha de caducidad: ");
-            string fechaCaducidad = Console.ReadLine();
-            Console.WriteLine("Código de seguridad: ");
-            int codigoSeguridad = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine($"Cantidad a pagar {precioTotal}");
+                Console.WriteLine("Número de tarjeta: ");
+                int numeroTarjeta = int.Parse(Console.ReadLine());
+                Console.WriteLine("Fecha de caducidad: ");
+                string fechaCaducidad = Console.ReadLine();
+                Console.WriteLine("Código de seguridad: ");
+                int codigoSeguridad = int.Parse(Console.ReadLine());
+                Console.ReadKey();
+                Console.WriteLine("Pagando....");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.WriteLine("Presiona una tecla para continuar...");
             Console.ReadKey();
-            Console.WriteLine("Pagando....");
+
         }
 
         public void DevolverDinero(double precioTotal, double dinero)
