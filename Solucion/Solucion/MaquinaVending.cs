@@ -131,6 +131,7 @@ namespace Solucion {
                 Console.WriteLine(producto.MostrarDetalles());
             }
         }
+
         public Producto ElegirProducto(List<Producto> listaProductos) {
             Producto productoTemp = null;
 

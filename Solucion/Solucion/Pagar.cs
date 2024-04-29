@@ -8,11 +8,11 @@ namespace Solucion {
     internal class Pagar {
         public Pagar() { }
 
-        public string PagarEfectivo(double precioTotal) //FALTA PONER MENSAJE
+        public string PagarEfectivo(double precioTotal) 
         {
             double dinero = 0;
 
-            Console.WriteLine($"Cantidad a pagar {precioTotal}");
+            Console.WriteLine($"Cantidad a pagar: {precioTotal}");
             do { 
                 Console.WriteLine("Introduzca la cantidad requerida en euros por favor: ");
                 dinero = double.Parse(Console.ReadLine());
@@ -24,7 +24,7 @@ namespace Solucion {
         }
 
         public void PagarTarjeta(double precioTotal) {
-            Console.WriteLine($"Cantidad a pagar {precioTotal}"); 
+            Console.WriteLine($"Cantidad a pagar: {precioTotal}"); 
             Console.WriteLine("Número de tarjeta: ");
             int numeroTarjeta = int.Parse(Console.ReadLine());
             Console.WriteLine("Fecha de caducidad: ");
@@ -45,7 +45,7 @@ namespace Solucion {
 
                 double centimos = (cambio*100)% 100;
                 double euros = cambio - (centimos/100); 
-                 Console.WriteLine($"Su vuelta son {centimos} centimos y {euros} euros.");
+                 Console.WriteLine($"Su vuelta son {euros} euros y {centimos} céntimos.");
 
                 Console.WriteLine($"Su vuelta son {cambio} euros.");
             }

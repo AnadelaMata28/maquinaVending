@@ -36,7 +36,7 @@ namespace Solucion {
                         maquinaVending.ProductInfo(); // Información
                         break;
                     case 3:
-                        if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
+                        if (ContrasenaValida()) 
                         {
                             maquinaVending.IndividualProductLoading();// Carga individua
                         }
