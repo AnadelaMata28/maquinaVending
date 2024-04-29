@@ -8,7 +8,7 @@ namespace Solucion {
     internal class Pagar {
         public Pagar() { }
 
-        public string PagarEfectivo(double precioTotal) //FALTA PONER MENSAJE
+        public string PagarEfectivo(double precioTotal)
         {
             try
             {
@@ -39,7 +39,6 @@ namespace Solucion {
                 string fechaCaducidad = Console.ReadLine();
                 Console.WriteLine("Código de seguridad: ");
                 int codigoSeguridad = int.Parse(Console.ReadLine());
-                Console.ReadKey();
                 Console.WriteLine("Pagando....");
             }
             catch (FormatException)
@@ -50,6 +49,7 @@ namespace Solucion {
             {
                 Console.WriteLine(ex.Message);
             }
+            Console.WriteLine("Transacción realizada con éxito. Gracias por su compra!");
             Console.WriteLine("Presiona una tecla para continuar...");
             Console.ReadKey();
 

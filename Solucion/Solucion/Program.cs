@@ -1,48 +1,24 @@
 ﻿using System;
-using System.IO; 
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solucion {
-    internal class Program {
-        static void Main(string[] args) {
-            MaquinaVending maquinaVending = new MaquinaVending();
-            maquinaVending.CargaCompletaProducto(0);
-            /*char separator = ';';
-            string archivoInicial = "example_vending_file_practical_work_i.csv";
-            if (File.Exists(archivoInicial))
-            {
-                try
-                {
-                    string[] lineas = File.ReadAllLines(archivoInicial); //Leer las lineas del archivo
-
-                    foreach (string line in lineas)
-                    {
-
-                        string[] datos = line.Split(separator);
-                        string id = datos[0];
-                        string nombre = datos[1];
-                        int unidades = int.Parse(datos[2]);
-                        double precioUnitario = double.Parse(datos[3]);
-                        string descripcion = datos[4];
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al leer el archivo: {ex.Message}");   
-                }
-            }
-            else
-            {
-                Console.WriteLine("El archivo no existe"); 
-            }*/
+namespace Solucion
+{
+    internal class Program
+    {
+        static List <Producto> listaProductos = new List <Producto> ();
+        static void Main(string[] args)
+        {
+            MaquinaVending maquinaVending = new MaquinaVending(listaProductos);
+            maquinaVending.CargaCompletaProducto(false);
 
             int opcion = 0;
-            do {
+            do
+            {
 
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine("|           Máquina Vending UFV           |");
@@ -58,8 +34,8 @@ namespace Solucion {
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("------------------------------------------");
 
-                /*try
-                {*/
+                try
+                {
                     opcion = int.Parse(Console.ReadLine());
                     switch (opcion)
                     {
@@ -68,12 +44,13 @@ namespace Solucion {
                             break;
                         case 2:
                             maquinaVending.ProductosDisponibles();
-                            maquinaVending.InfoProducto(); // Información
+                            Producto producto = maquinaVending.ElegirProducto(listaProductos);
+                            Console.WriteLine(maquinaVending.InfoProducto(producto)); // Información
                             break;
                         case 3:
-                            if (ContrasenaValida()) //HAY QUE HACER EL MÉTODO
+                            if (ContrasenaValida()) 
                             {
-                                maquinaVending.CargaIndividualProducto();// Carga individua
+                                maquinaVending.CargaIndividualProducto();// Carga individual
                             }
                             else
                             {
@@ -83,7 +60,7 @@ namespace Solucion {
                         case 4:
                             if (ContrasenaValida())
                             {
-                                maquinaVending.CargaCompletaProducto(1);// Carga completa
+                                maquinaVending.CargaCompletaProducto(true);// Carga completa
                             }
                             else
                             {
@@ -96,23 +73,24 @@ namespace Solucion {
                         default:
                             break;
                     }
-               // }
-                /*catch (FormatException)
+                }
+                catch (FormatException)
                 {
                     Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
-                }*/
-                /*catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }*/
+                }
                 Console.WriteLine("Presiona una tecla para continuar...");
                 Console.ReadKey();
-                Console.Clear(); 
+                Console.Clear();
 
             } while (opcion != 5);
         }
 
-        public static bool ContrasenaValida() {
+        public static bool ContrasenaValida()
+        {
             try
             {
                 string contrasena = "admin";
@@ -131,7 +109,7 @@ namespace Solucion {
             catch (Exception ex)
             {
                 Console.WriteLine($"Error inesperado: {ex.Message}");
-                return false; 
+                return false;
             }
         }
     }

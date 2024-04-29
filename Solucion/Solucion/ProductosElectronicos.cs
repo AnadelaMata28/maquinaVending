@@ -25,8 +25,14 @@ namespace Solucion {
             Precargado = precargado;
         }
 
-        public override string MostrarDetalles() {
-            return base.MostrarDetalles() + $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
+        public override string MostrarDetalles(bool eleccion) {
+            string detalles = base.MostrarDetalles(eleccion);
+            
+            if(eleccion)
+            {
+                detalles += $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
+            }
+            return detalles;
         }
 
         public override void SolicitarDetalles(List<Producto> listaProductos) {

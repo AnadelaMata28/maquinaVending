@@ -7,120 +7,108 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solucion {
+namespace Solucion
+{
     internal class MaquinaVending
     {
-
-        List<Producto> listaProductos = new List<Producto>();
-
+        protected List<Producto> listaProductos;
         public MaquinaVending() { }
-
+        public MaquinaVending(List<Producto> productos)
+        {
+            listaProductos = productos;
+        }
 
         public void ComprarProducto()
         {
+            int opcion = 0;
             double precioTotal = 0;
-            Pagar pagar = null;
+            Pagar pagar = new Pagar();
             Producto productoTemp = null;
+            List<Producto> listaCompra = new List<Producto>();
 
-            ProductosDisponibles();
-
-            Console.WriteLine(InfoProducto());
-
-            try
+            do
             {
+                ProductosDisponibles();
+                Console.WriteLine();
+                Console.WriteLine("  --- Comprando productos ---  ");
+                Console.WriteLine();
+
+                productoTemp = ElegirProducto(listaProductos);
+
+                Console.WriteLine(InfoProducto(productoTemp));
+
                 precioTotal += productoTemp.PrecioUnitario;
 
-                int opcion = 0;
+                listaCompra.Add(productoTemp);
+
+                if (productoTemp.Unidades == 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Producto agotado");
+                    precioTotal -= productoTemp.PrecioUnitario;
+                    listaCompra.Remove(productoTemp);
+                }
+
+                else if (productoTemp.Unidades > 0)
+                {
+                    productoTemp.Unidades--;
+                }
+
                 Console.WriteLine("Desea comprar algún otro producto?");
                 Console.Write("En caso de no querer, pulse 0. Si desea comprar más, pulse 1: ");
                 opcion = int.Parse(Console.ReadLine());
-                do
+            } while (opcion == 1);
+
+            Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
+            int cancelar = int.Parse(Console.ReadLine());
+
+            if (cancelar == 1)
+            {
+                foreach (Producto producto in listaCompra)
                 {
-                    switch (opcion)
-                    {
-                        case 0:
-                            int option = 0;
-                            do
-                            {
-                                Console.WriteLine("Método para pagar: ");
-                                Console.WriteLine("1. Efectivo");
-                                Console.WriteLine("2. Tarjeta");
-
-                                switch (option)
-                                {
-                                    case 1:
-                                        pagar.PagarEfectivo(precioTotal);
-                                        break;
-                                    case 2:
-                                        pagar.PagarTarjeta(precioTotal);
-                                        break;
-                                }
-                            } while (option != 2);
-
-                            Salir();
-                            break;
-                        case 1:
-                            Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
-                            int respuesta = int.Parse(Console.ReadLine());
-                            if (respuesta == 0)
-                            {
-                                ComprarProducto();
-                            }
-
-                            else if (respuesta == 1)
-                            {
-                                int option2 = 0;
-                                do
-                                {
-                                    Console.WriteLine("Método para pagar: ");
-                                    Console.WriteLine("1. Efectivo");
-                                    Console.WriteLine("2. Tarjeta");
-
-                                    switch (option2)
-                                    {
-                                        case 1:
-                                            pagar.PagarEfectivo(precioTotal);
-                                            break;
-                                        case 2:
-                                            pagar.PagarTarjeta(precioTotal);
-                                            break;
-                                    }
-                                } while (option2 != 2);
-                            }
-                            Salir();
-                            break;
-                        default:
-                            break;
-                    }
-                } while (opcion != 1);
+                    producto.Unidades++;
+                }
+                Console.WriteLine("Has cancelado tu compra. Hasta la próxima!!");
+                return;
             }
-            catch (FormatException)
+
+
+            Console.WriteLine("Método para pagar: ");
+            Console.WriteLine("1. Efectivo");
+            Console.WriteLine("2. Tarjeta");
+
+            Console.WriteLine("Opción: ");
+            int opcionPagar = int.Parse(Console.ReadLine());
+
+            switch (opcionPagar)
             {
-                Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
+                case 1:
+                    pagar.PagarEfectivo(precioTotal);
+                    break;
+                case 2:
+                    pagar.PagarTarjeta(precioTotal);
+                    break;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
             Console.WriteLine("Presiona una tecla para continuar...");
             Console.ReadKey();
         }
 
-        public string InfoProducto()
+        public string InfoProducto(Producto producto)
         {
-            Producto producto = ElegirProducto(listaProductos);
-            if(producto == null)
+            if (producto == null)
             {
                 return $"Error eligiendo producto";
             }
-            return $"{producto.MostrarDetalles()}";
+            return $"{producto.MostrarDetalles(true)}";
         }
 
-        public void CargaCompletaProducto(int eleccion) //si eleccion es 0 se mete el archivo de inicio
+        public void CargaCompletaProducto(bool eleccion)
         {
             char separator = ';';
             string path;
-            if(eleccion == 0) {
+            if (!eleccion)
+            { //si eleccion es false se mete el archivo de inicio
                 path = "..\\..\\..\\..\\Archivos\\example_vending_file_practical_work_i.csv"; //ruta del archivo
             }
             else
@@ -132,7 +120,7 @@ namespace Solucion {
             {
                 using (StreamReader archivo = File.OpenText(path)) //abrir el archivo
                 {
-                    string header = archivo.ReadLine(); 
+                    string header = archivo.ReadLine();
                     string[] names = header.Split(separator);
 
                     string line;
@@ -141,7 +129,7 @@ namespace Solucion {
                     {
                         string[] datos = line.Split(separator);
 
-                        if (datos[0] == "1") 
+                        if (datos[0] == "1")
                         {
                             MaterialesPreciosos mp = new MaterialesPreciosos(listaProductos.Count, datos[1], int.Parse(datos[2]), double.Parse(datos[3]), datos[4], datos[5], double.Parse(datos[6]));
                             listaProductos.Add(mp);
@@ -157,7 +145,7 @@ namespace Solucion {
                             bool datos2 = false;
                             if (datos[6] == "1")
                             {
-                                datos1 = true;   
+                                datos1 = true;
                             }
                             else if (datos[7] == "1")
                             {
@@ -195,15 +183,15 @@ namespace Solucion {
         {
             foreach (Producto producto in listaProductos)
             {
-                Console.WriteLine(producto.MostrarDetalles());
+                Console.WriteLine(producto.MostrarDetalles(false));
             }
         }
         public Producto ElegirProducto(List<Producto> listaProductos)
         {
+            Producto productoTemp = null;
+
             try
             {
-                Producto productoTemp = null;
-
                 Console.WriteLine("Introduce el Id del producto que deseas: ");
                 int id = int.Parse(Console.ReadLine());
 
