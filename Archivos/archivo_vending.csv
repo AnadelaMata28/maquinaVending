@@ -1,1 +1,1 @@
-product_type;product_name;product_units;product_unit_prize;product_description;materials;weight;nutritional_information;has_battery;charged_by_default
+tipo_producto;nombre_producto;unidades_producto;unidades_precio_producto;descripcion_producto;materiales;peso;informacion_nutricional;tiene_bateria;cargado_por_defecto
