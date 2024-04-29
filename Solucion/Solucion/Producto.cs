@@ -175,16 +175,32 @@ namespace Solucion
         }
         public void AnadirUnidades(Producto producto)
         {
-            Console.WriteLine("Este producto ya existe.");
-            Console.Write("Introduzca las unidades que quieres añadir (si introduces 0 las unidades del producto serán 0): ");
-            int unidades = int.Parse(Console.ReadLine());
-            if (unidades != 0)
+            try
             {
-                producto.Unidades += unidades;
+                Console.WriteLine("Este producto ya existe.");
+                Console.Write("Introduzca las unidades que quieres añadir (si introduces 0 las unidades del producto serán 0): ");
+                int unidades = int.Parse(Console.ReadLine());
+
+                if (unidades <  0)
+                {
+                    throw new ArgumentException("Error: las unidades no pueden ser negativo");
+                }
+                if (unidades != 0)
+                {
+                    producto.Unidades += unidades;
+                }
+                else
+                {
+                    producto.Unidades = 0;
+                }
             }
-            else
+            catch(FormatException)
             {
-                producto.Unidades = 0;
+                Console.WriteLine("Error: Ingresa un número válido para las unidades.");
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Error inesperado: {e.Message}"); 
             }
 
         }

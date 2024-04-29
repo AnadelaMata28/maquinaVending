@@ -54,9 +54,24 @@ namespace Solucion
                     productoTemp.Unidades--;
                 }
 
+                Console.WriteLine();
                 Console.WriteLine("Desea comprar algún otro producto?");
                 Console.Write("En caso de no querer, pulse 0. Si desea comprar más, pulse 1: ");
-                opcion = int.Parse(Console.ReadLine());
+
+                try
+                {
+                    opcion = int.Parse(Console.ReadLine());
+                    if (opcion != 0 && opcion != 1)
+                    {
+                        throw new ArgumentException("Por favor ingrese un valor válido."); 
+                    }
+                }
+                catch(ArgumentException e)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Error inesperado: {e.Message}"); 
+                }
+             
             } while (opcion == 1);
 
             Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
