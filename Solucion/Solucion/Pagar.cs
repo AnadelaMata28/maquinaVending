@@ -13,7 +13,7 @@ namespace Solucion {
             try
             {
                 double dinero = 0;
-
+                Console.WriteLine();
                 Console.WriteLine($"Cantidad a pagar {precioTotal}");
                 do
                 {
@@ -32,6 +32,7 @@ namespace Solucion {
         public void PagarTarjeta(double precioTotal) {
             try
             {
+                Console.WriteLine(); 
                 Console.WriteLine($"Cantidad a pagar {precioTotal}");
                 Console.WriteLine("Número de tarjeta: ");
                 int numeroTarjeta = int.Parse(Console.ReadLine());
@@ -73,7 +74,7 @@ namespace Solucion {
                     Console.WriteLine($"Su vuelta son {euros} euros y {centimos} centimos.");
                 }
                 Console.WriteLine(); 
-                Console.WriteLine("Gracias por la comprar!"); 
+                Console.WriteLine("Gracias por su compra!"); 
             }
         }
     }

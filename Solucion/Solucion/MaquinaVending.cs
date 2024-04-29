@@ -61,21 +61,24 @@ namespace Solucion
                 try
                 {
                     opcion = int.Parse(Console.ReadLine());
-                    if (opcion != 0 && opcion != 1)
-                    {
-                        throw new ArgumentException("Por favor introduce un valor válido."); 
-                    }
+       
                 }
-                catch(ArgumentException e)
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Opción no válida. Por favor, ingrese un número válido...");
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"Error inesperado: {e.Message}"); 
+                    Console.WriteLine("Error: " + ex.Message);
                 }
-             
+                
+
             } while (opcion == 1);
 
             try
             {
+                Console.WriteLine(); 
                 Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
                 int cancelar = int.Parse(Console.ReadLine());
 
@@ -100,6 +103,7 @@ namespace Solucion
             }
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
+            Console.Clear(); 
 
 
             Console.WriteLine(); 
