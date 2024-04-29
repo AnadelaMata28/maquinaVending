@@ -119,8 +119,7 @@ namespace Solucion
                     pagar.PagarTarjeta(precioTotal);
                     break;
             }
-
-            Console.WriteLine("Presiona una tecla para continuar...");
+            Console.WriteLine(); 
             Console.ReadKey();
         }
 
@@ -222,6 +221,7 @@ namespace Solucion
 
             try
             {
+                Console.WriteLine(); 
                 Console.WriteLine("Introduce el Id del producto que deseas: ");
                 int id = int.Parse(Console.ReadLine());
 
@@ -237,6 +237,7 @@ namespace Solucion
             }
             catch (FormatException)
             {
+                Console.WriteLine(); 
                 Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
                 return null;
             }

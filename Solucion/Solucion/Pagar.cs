@@ -49,9 +49,8 @@ namespace Solucion {
             {
                 Console.WriteLine(ex.Message);
             }
+            Console.WriteLine(); 
             Console.WriteLine("Transacción realizada con éxito. Gracias por su compra!");
-            Console.WriteLine("Presiona una tecla para continuar...");
-            Console.ReadKey();
 
         }
 
@@ -63,11 +62,18 @@ namespace Solucion {
             {
                 cambio = precioTotal - dinero;
 
-                double centimos = (cambio*100)% 100;
-                double euros = cambio - (centimos/100); 
-                 Console.WriteLine($"Su vuelta son {centimos} centimos y {euros} euros.");
-
-                Console.WriteLine($"Su vuelta son {cambio} euros.");
+                double centimos = -1*(cambio*100)% 100;
+                double euros = -1*(cambio - (centimos/100)); 
+                if (centimos == 0)
+                {
+                    Console.WriteLine($"Su vuelta: {euros} euros.");
+                }
+                else 
+                {
+                    Console.WriteLine($"Su vuelta son {euros} euros y {centimos} centimos.");
+                }
+                Console.WriteLine(); 
+                Console.WriteLine("Gracias por la comprar!"); 
             }
         }
     }
