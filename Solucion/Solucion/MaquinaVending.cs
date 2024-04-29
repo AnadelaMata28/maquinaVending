@@ -63,7 +63,7 @@ namespace Solucion
                     opcion = int.Parse(Console.ReadLine());
                     if (opcion != 0 && opcion != 1)
                     {
-                        throw new ArgumentException("Por favor ingrese un valor válido."); 
+                        throw new ArgumentException("Por favor introduce un valor válido."); 
                     }
                 }
                 catch(ArgumentException e)
@@ -74,20 +74,35 @@ namespace Solucion
              
             } while (opcion == 1);
 
-            Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
-            int cancelar = int.Parse(Console.ReadLine());
-
-            if (cancelar == 1)
+            try
             {
-                foreach (Producto producto in listaCompra)
+                Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
+                int cancelar = int.Parse(Console.ReadLine());
+
+                if (cancelar == 1)
                 {
-                    producto.Unidades++;
+                    foreach (Producto producto in listaCompra)
+                    {
+                        producto.Unidades++;
+                    }
+                    Console.WriteLine("Has cancelado tu compra. Hasta la próxima!!");
+                    return;
                 }
-                Console.WriteLine("Has cancelado tu compra. Hasta la próxima!!");
-                return;
             }
+            catch(FormatException)
+            {
+                Console.WriteLine("Error: Opción no válida. Por favor, ingrese un número válido..."); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
 
 
+            Console.WriteLine(); 
             Console.WriteLine("Método para pagar: ");
             Console.WriteLine("1. Efectivo");
             Console.WriteLine("2. Tarjeta");

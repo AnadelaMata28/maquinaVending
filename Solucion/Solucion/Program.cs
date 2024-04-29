@@ -33,6 +33,7 @@ namespace Solucion
                 Console.WriteLine("|-----------------------------------------|");
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("------------------------------------------");
+                Console.WriteLine();
 
                 try
                 {
