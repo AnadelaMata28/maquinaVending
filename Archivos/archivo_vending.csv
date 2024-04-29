@@ -1,1 +1,13 @@
 tipo_producto;nombre_producto;unidades_producto;unidades_precio_producto;descripcion_producto;materiales;peso;informacion_nutricional;tiene_bateria;cargado_por_defecto
+1;Collar de oro blanco;1;5000;Un elegante collar hecho de oro blanco con incrustaciones de diamantes.;Oro blanco y diamantes;10;;;
+3;iPhone 15 Pro;1;1000;Un telefono inteligente con camara de alta resolucion y tecnologia punta;Plastico y metal;;;1;1
+2;Chocolate gourmet;6;5;Chocolate de alta calidad elaborado con cacao organico y sabores exoticos;;;Porcion de 30g:calorias 250, grasas 10g, carbohidratos 15g, proteinas 2g;;
+1;Anillo de platino con rubi;1;3000;Un exquisito anillo de platino con un rubi de alta calidad como piedra central.;Platino y rubi;5;;;
+3;MacBook Air;1;1000;Ordenador de alta gama, superfino y rapido para trabajar, jugar o crear donde quieras.;Plastico y metal;;;1;1
+2;Cafe solo de especialidad;3;20;Cafe gourmet de granos seleccionados y tostado artesanalmente para un sabor unico;;;0,2g de grasa. 0,1g de proteinas. 97,8g de agua. 0,04g de cafeina;;
+1;Pulsera de plata con zafiros;1;1500;Una pulsera elegante hecha de plata con incrustaciones de zafiros azules;Plata y zafiros;15;;;
+3;Smartwatch de alta gama;1;400;Un reloj inteligente con pantalla tactil, monitor de actividad fisica y conectividad Bluethooth;Metal,plastico y vidrio;;;1;1
+2;Queso artesanal;2;30;Queso elaborado de forma tradicional con leche de vaca de alta calidad y madurado en cuevas de piedra;;;Porcion de 30g:calorias 120, grasas 10g, carbohidratos 1g, proteinas 7g;;
+1;Pendientes de oro con perlas;1;2000;Pendientes elegantes con perlas blancas naturales montadas en oro amarillo;Oro amarillo y perlas;8;;;
+3;Tablet de alta resolucion;1;600;Una tableta con pantalla de alta resolucion, perfecta para entretenimiento multimedia y trabajo productivo;Plastico, metal y vidrio;;;1;1
+2;Miel organica de flores silvestres;4;15;Miel pura y natural recolectada de flores silvestres;;;Sin aditivos ni conservantes;;
