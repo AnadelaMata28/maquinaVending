@@ -139,8 +139,6 @@ namespace Solucion
                 {
                     Console.WriteLine(ex.Message);
                 }
-                Console.WriteLine("Presiona una tecla para continuar...");
-                Console.ReadKey();
 
             } while (opcion != 4);
         }
