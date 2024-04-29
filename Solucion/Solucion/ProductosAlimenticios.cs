@@ -24,6 +24,7 @@ namespace Solucion
 
         public override string MostrarDetalles(bool eleccion)
         {
+            Console.Clear();
             string detalles = base.MostrarDetalles(eleccion);
 
             if (eleccion)
@@ -39,6 +40,7 @@ namespace Solucion
         {
             base.SolicitarDetalles(listaProductos);
 
+            Console.Clear();
             Console.Write("Información nutricional: ");
             InformacionNutricional = Console.ReadLine();
         }

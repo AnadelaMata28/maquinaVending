@@ -12,9 +12,9 @@ namespace Solucion {
         {
             try
             {
-                double dinero = 0;
+                double dinero = 0.0;
                 Console.WriteLine();
-                Console.WriteLine($"Cantidad a pagar {precioTotal}");
+                Console.WriteLine($"Cantidad a pagar: {precioTotal}");
                 do
                 {
                     Console.WriteLine("Introduzca la cantidad requerida en euros por favor: ");
@@ -33,7 +33,7 @@ namespace Solucion {
             try
             {
                 Console.WriteLine(); 
-                Console.WriteLine($"Cantidad a pagar {precioTotal}");
+                Console.WriteLine($"Cantidad a pagar {precioTotal} €");
                 Console.WriteLine("Número de tarjeta: ");
                 int numeroTarjeta = int.Parse(Console.ReadLine());
                 Console.WriteLine("Fecha de caducidad: ");
@@ -67,11 +67,11 @@ namespace Solucion {
                 double euros = -1*(cambio - (centimos/100)); 
                 if (centimos == 0)
                 {
-                    Console.WriteLine($"Su vuelta: {euros} euros.");
+                    Console.WriteLine($"Su vuelta: {euros} €.");
                 }
                 else 
                 {
-                    Console.WriteLine($"Su vuelta son {euros} euros y {centimos} centimos.");
+                    Console.WriteLine($"Su vuelta son {euros} euros y {centimos} céntimos.");
                 }
                 Console.WriteLine(); 
                 Console.WriteLine("Gracias por su compra!"); 

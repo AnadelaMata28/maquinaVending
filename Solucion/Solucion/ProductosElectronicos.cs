@@ -38,6 +38,7 @@ namespace Solucion {
         public override void SolicitarDetalles(List<Producto> listaProductos) {
             base.SolicitarDetalles(listaProductos);
 
+            Console.Clear();
             Console.Write("Tipos de materiales: ");
             TiposMateriales = Console.ReadLine();
             Console.Write("Pilas (true - SI / false - NO): ");

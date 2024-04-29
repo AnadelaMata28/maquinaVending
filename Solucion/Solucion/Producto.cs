@@ -32,6 +32,7 @@ namespace Solucion
 
         public virtual string MostrarDetalles(bool eleccion)
         {
+            Console.Clear();
             return $"\n\tId: {Id}\n\tNombre: {Nombre}\n\tUnidades: {Unidades}\n\tPrecio unitario: {PrecioUnitario}\n\tDescripción: {Descripcion}";
         }
 
@@ -158,7 +159,6 @@ namespace Solucion
 
             if (listaProductos != null)
             {
-
                 foreach (Producto producto in listaProductos)
                 {
                     if (producto.Nombre == nombre)
@@ -181,7 +181,7 @@ namespace Solucion
 
                 if (unidades <  0)
                 {
-                    throw new ArgumentException("Error: las unidades no pueden ser negativo");
+                    throw new ArgumentException("Error: las unidades no pueden ser negativas.");
                 }
                 if (unidades != 0)
                 {
