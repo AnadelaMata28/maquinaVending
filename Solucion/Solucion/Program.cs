@@ -35,13 +35,13 @@ namespace Solucion
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine();
                 Console.Write("Opción: ");
-                opcion = int.Parse(Console.ReadLine());
-
-                Console.WriteLine();
-                Console.Clear();
-
+               
                 try
                 {
+                    opcion = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine();
+                    Console.Clear();
                     switch (opcion)
                     {
                         case 1:

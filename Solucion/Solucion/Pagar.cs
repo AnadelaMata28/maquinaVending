@@ -12,15 +12,20 @@ namespace Solucion
 
         public void PagarEfectivo(double precioTotal)
         {
+            MaquinaVending maquinaVending = new MaquinaVending();
             try
             {
                 double dinero = 0;
                 Console.WriteLine();
                 Console.WriteLine($"Cantidad a pagar {precioTotal} euros");
+                Console.WriteLine();
+
                 do
                 {
+                    Console.WriteLine($"Has introducido {dinero} euros");
                     Console.Write("Introduzca la cantidad requerida en euros por favor: ");
-                    dinero = double.Parse(Console.ReadLine());
+                    dinero += double.Parse(Console.ReadLine());
+                    Console.WriteLine();
                 } while (dinero < precioTotal);
 
                 DevolverDinero(precioTotal, dinero);
@@ -29,6 +34,11 @@ namespace Solucion
             {
                 Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Pulse una tecla...");
+            Console.ReadKey();
+            maquinaVending.Salir();
         }
 
         public void PagarTarjeta(double precioTotal)
@@ -45,9 +55,10 @@ namespace Solucion
                 string fechaCaducidad = Console.ReadLine();
                 Console.Write("Código de seguridad: ");
                 int codigoSeguridad = int.Parse(Console.ReadLine());
+                Console.WriteLine();
                 Console.WriteLine("Pagando....");
+                Console.WriteLine();
                 Console.WriteLine("Transacción realizada con éxito");
-                maquinaVending.Salir();
             }
             catch (FormatException)
             {
@@ -58,12 +69,13 @@ namespace Solucion
                 Console.WriteLine(ex.Message);
             }
             Console.WriteLine();
+            Console.WriteLine("Pulse una tecla...");
+            Console.ReadKey();
+            maquinaVending.Salir();
         }
 
         public void DevolverDinero(double precioTotal, double dinero)
         {
-            MaquinaVending maquinaVending = new MaquinaVending();
-
             double cambio = 0;
 
             if (dinero > precioTotal)
@@ -82,7 +94,7 @@ namespace Solucion
                 }
                 Console.WriteLine();
                 Console.WriteLine($"Pagado con éxito");
-                maquinaVending.Salir();
+                Console.WriteLine();
             }
         }
     }

@@ -102,18 +102,19 @@ namespace Solucion
                 Console.WriteLine();
                 Console.WriteLine("Error: " + ex.Message);
             }
+            Console.WriteLine();
             Console.WriteLine("Pulse una tecla para empezar el proceso de pago");
             Console.ReadKey();
             Console.Clear();
 
-
-            Console.WriteLine();
             Console.WriteLine("Método para pagar: ");
             Console.WriteLine("1. Efectivo");
             Console.WriteLine("2. Tarjeta");
 
             Console.Write("Opción: ");
             int opcionPagar = int.Parse(Console.ReadLine());
+
+            Console.Clear();
 
             switch (opcionPagar)
             {
@@ -124,7 +125,7 @@ namespace Solucion
                     pagar.PagarTarjeta(precioTotal);
                     break;
             }
-            Console.WriteLine();
+            Console.WriteLine("Pulse una tecla...");
             Console.ReadKey();
         }
 
