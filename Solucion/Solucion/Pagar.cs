@@ -12,7 +12,6 @@ namespace Solucion
 
         public void PagarEfectivo(double precioTotal)
         {
-            MaquinaVending maquinaVending = new MaquinaVending();
             try
             {
                 double dinero = 0.0;
