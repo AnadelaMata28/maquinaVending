@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solucion {
-    internal class ProductosElectronicos : Producto {
+namespace Solucion
+{
+    internal class ProductosElectronicos : Producto
+    {
         public string TiposMateriales { get; set; }
 
         public bool Pilas { get; set; }
@@ -19,23 +21,26 @@ namespace Solucion {
         }
 
         public ProductosElectronicos(int id, string nombre, int unidades, double precioUnitario, string descripcion, string tiposMateriales, bool pilas, bool precargado)
-            : base(id, nombre, unidades, precioUnitario, descripcion) {
+            : base(id, nombre, unidades, precioUnitario, descripcion)
+        {
             TiposMateriales = tiposMateriales;
             Pilas = pilas;
             Precargado = precargado;
         }
 
-        public override string MostrarDetalles(bool eleccion) {
+        public override string MostrarDetalles(bool eleccion)
+        {
             string detalles = base.MostrarDetalles(eleccion);
-            
-            if(eleccion)
+
+            if (eleccion)
             {
                 detalles += $"\n\tTipos de materiales: {TiposMateriales}\n\tPilas: {Pilas.ToString()}\n\tPrecargado: {Precargado.ToString()}";
             }
             return detalles;
         }
 
-        public override void SolicitarDetalles(List<Producto> listaProductos) {
+        public override void SolicitarDetalles(List<Producto> listaProductos)
+        {
             base.SolicitarDetalles(listaProductos);
 
             Console.Clear();

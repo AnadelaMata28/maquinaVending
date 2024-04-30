@@ -30,8 +30,9 @@ namespace Solucion
             {
                 ProductosDisponibles();
                 Console.WriteLine();
-                Console.WriteLine("  --- Comprando productos ---  ");
                 Console.WriteLine();
+
+                Console.WriteLine("  --- Comprando productos ---  ");
 
                 productoTemp = ElegirProducto(listaProductos);
 
@@ -61,7 +62,7 @@ namespace Solucion
                 try
                 {
                     opcion = int.Parse(Console.ReadLine());
-       
+
                 }
                 catch (FormatException)
                 {
@@ -72,14 +73,14 @@ namespace Solucion
                     Console.WriteLine();
                     Console.WriteLine("Error: " + ex.Message);
                 }
-                
+
 
             } while (opcion == 1);
 
             try
             {
-                Console.WriteLine(); 
-                Console.WriteLine("¿Desea cancelar la compra? (Si = 1 / No = 0)");
+                Console.WriteLine();
+                Console.Write("¿Desea cancelar la compra? (Si = 1 / No = 0): ");
                 int cancelar = int.Parse(Console.ReadLine());
 
                 if (cancelar == 1)
@@ -92,27 +93,28 @@ namespace Solucion
                     return;
                 }
             }
-            catch(FormatException)
+            catch (FormatException)
             {
-                Console.WriteLine("Error: Opción no válida. Por favor, ingrese un número válido..."); 
+                Console.WriteLine("Error: Opción no válida. Por favor, ingrese un número válido...");
             }
             catch (Exception ex)
             {
                 Console.WriteLine();
                 Console.WriteLine("Error: " + ex.Message);
             }
-            Console.WriteLine("Pulse una tecla para continuar");
+            Console.WriteLine();
+            Console.WriteLine("Pulse una tecla para empezar el proceso de pago");
             Console.ReadKey();
-            Console.Clear(); 
+            Console.Clear();
 
-
-            Console.WriteLine(); 
             Console.WriteLine("Método para pagar: ");
             Console.WriteLine("1. Efectivo");
             Console.WriteLine("2. Tarjeta");
 
-            Console.WriteLine("Opción: ");
+            Console.Write("Opción: ");
             int opcionPagar = int.Parse(Console.ReadLine());
+
+            Console.Clear();
 
             switch (opcionPagar)
             {
@@ -123,7 +125,7 @@ namespace Solucion
                     pagar.PagarTarjeta(precioTotal);
                     break;
             }
-            Console.WriteLine(); 
+            Console.WriteLine("Pulse una tecla...");
             Console.ReadKey();
         }
 
@@ -160,6 +162,11 @@ namespace Solucion
 
                     while ((line = archivo.ReadLine()) != null)
                     {
+                        if (listaProductos.Count >= 12)
+                        {
+                            Console.WriteLine("La máquina está llena");
+                            return;
+                        }
                         string[] datos = line.Split(separator);
 
                         if (datos[0] == "1")
@@ -225,8 +232,8 @@ namespace Solucion
 
             try
             {
-                Console.WriteLine(); 
-                Console.WriteLine("Introduce el Id del producto que deseas: ");
+                Console.WriteLine();
+                Console.Write("Introduce el Id del producto que deseas: ");
                 int id = int.Parse(Console.ReadLine());
 
                 foreach (Producto producto in listaProductos)
@@ -241,7 +248,7 @@ namespace Solucion
             }
             catch (FormatException)
             {
-                Console.WriteLine(); 
+                Console.WriteLine();
                 Console.WriteLine("Error: Opción inválida. Por favor, ingrese un número válido.");
                 return null;
             }

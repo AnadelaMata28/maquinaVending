@@ -10,7 +10,7 @@ namespace Solucion
 {
     internal class Program
     {
-        static List <Producto> listaProductos = new List <Producto> ();
+        static List<Producto> listaProductos = new List<Producto>();
         static void Main(string[] args)
         {
             MaquinaVending maquinaVending = new MaquinaVending(listaProductos);
@@ -34,10 +34,14 @@ namespace Solucion
                 Console.WriteLine("| Introduzca la opción que desee realizar |");
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine();
-
+                Console.Write("Opción: ");
+               
                 try
                 {
                     opcion = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine();
+                    Console.Clear();
                     switch (opcion)
                     {
                         case 1:
@@ -46,10 +50,11 @@ namespace Solucion
                         case 2:
                             maquinaVending.ProductosDisponibles();
                             Producto producto = maquinaVending.ElegirProducto(listaProductos);
+                            Console.Clear();
                             Console.WriteLine(maquinaVending.InfoProducto(producto)); // Información
                             break;
                         case 3:
-                            if (ContrasenaValida()) 
+                            if (ContrasenaValida())
                             {
                                 maquinaVending.CargaIndividualProducto();// Carga individual
                             }

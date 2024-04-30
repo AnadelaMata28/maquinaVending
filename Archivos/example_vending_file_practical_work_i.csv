@@ -1,5 +1,5 @@
-product_type;product_name;product_units;product_unit_prize;product_description;materials;weight;nutritional_information;has_battery;charged_by_default
-1;gold ingot;3;1450;This a 18k gold ingot of 250 grames.;gold;250;;;
-1;silver bullion 20oz ingot;7;550;This a silver bullion ingot of 20 ounces.;silver;567;;;
-2;Coffee with milk;20;1.55;This a coffee milk with skimmed milk;;;Our 8 oz cup of coffee with 1 oz of skimmed milk has 12 calories.;;
-3;Airpod Max Pink;2;615;AirPods Max combine high-fidelity audio with industry-leading Active Noise Cancellation to deliver an unparalleled listening experience. Each part of their custom-built driver works to produce sound with ultra-low distortion across the audible range.;;384.8;;1;0
+tipo_producto;nombre_producto;unidades_producto;unidades_precio_producto;descripcion_producto;materiales;peso;informacion_nutricional;tiene_bateria;cargado_por_defecto
+1;Lingote de oro;3;1450;Es un lingote de 18k de 250 gramos.;oro;250;;;
+1;Lingote de plata de 20oz;7;550;Es un lingote de plata de 20 onzas.;plata;567;;;
+2;Cafe con leche;20;1.55;Es un cafe con leche desnatada;;;Nuestra taza de cafe de 8oz y con 1oz de leche desnatada tiene 12 calorias.;;
+3;Airpod Max Rosa;2;615;Los AirPods Max combinan audio de alta fidelidad con la cancelación activa de ruido lider en la industria para brindar una experiencia auditiva incomparable. Cada parte de su controlador personalizado funciona para producir sonido con una distorsion ultrabaja en todo el rango audible..;;384.8;;1;0
