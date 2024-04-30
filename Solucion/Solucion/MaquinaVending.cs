@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -217,6 +218,7 @@ namespace Solucion
         {
             Console.WriteLine("Muchas gracias por su compra!");
             Console.Clear();
+            //FALTA ALGO QUE NO PUEDE SER ENVIROMENT.EXIT(0) PARA TERMINAR EL PROGRAMA
         }
 
         public void ProductosDisponibles()
