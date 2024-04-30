@@ -38,13 +38,11 @@ namespace Solucion
             Console.WriteLine();
             Console.WriteLine("Pulse una tecla...");
             Console.ReadKey();
-            maquinaVending.Salir();
+            Console.Clear();
         }
 
         public void PagarTarjeta(double precioTotal)
         {
-            MaquinaVending maquinaVending = new MaquinaVending();
-
             try
             {
                 Console.WriteLine();
@@ -69,9 +67,9 @@ namespace Solucion
                 Console.WriteLine(ex.Message);
             }
             Console.WriteLine();
-            Console.WriteLine("Pulse una tecla...");
+            Console.WriteLine("Pulse una tecla para salir...");
             Console.ReadKey();
-            maquinaVending.Salir();
+            Console.Clear();
         }
 
         public void DevolverDinero(double precioTotal, double dinero)
@@ -93,8 +91,9 @@ namespace Solucion
                     Console.WriteLine($"Su vuelta son {euros} euros y {centimos} céntimos.");
                 }
                 Console.WriteLine();
-                Console.WriteLine($"Pagado con éxito");
+                Console.WriteLine($"Pagado con éxito. Muchas gracias!");
                 Console.WriteLine();
+                Console.Clear();
             }
         }
     }
