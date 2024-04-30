@@ -37,6 +37,11 @@ namespace Solucion
 
         public void AnadirProducto(List<Producto> listaProductos)
         {
+            if(listaProductos.Count >= 12)
+            {
+                Console.WriteLine("La máquina está llena");
+                return;
+            }
             int opcion = 0;
             do
             {
@@ -73,7 +78,7 @@ namespace Solucion
 
                             if (productoTemp != null)
                             {
-                                AnadirUnidades(productoTemp);
+                                AnadirUnidades(productoTemp, listaProductos);
                             }
                             else
                             {
@@ -93,7 +98,7 @@ namespace Solucion
                             Producto productoTemp1 = ExisteProducto(listaProductos, nombre1);
                             if (productoTemp1 != null)
                             {
-                                AnadirUnidades(productoTemp1);
+                                AnadirUnidades(productoTemp1, listaProductos);
                             }
                             else
                             {
@@ -113,7 +118,7 @@ namespace Solucion
                             Producto productoTemp2 = ExisteProducto(listaProductos, nombre2);
                             if (productoTemp2 != null)
                             {
-                                AnadirUnidades(productoTemp2);
+                                AnadirUnidades(productoTemp2, listaProductos);
                             }
                             else
                             {
@@ -171,15 +176,15 @@ namespace Solucion
 
             return null;
         }
-        public void AnadirUnidades(Producto producto)
+        public void AnadirUnidades(Producto producto, List<Producto> listaProductos)
         {
             try
             {
                 Console.WriteLine("Este producto ya existe.");
-                Console.Write("Introduzca las unidades que quieres añadir (si introduces 0 las unidades del producto serán 0): ");
+                Console.Write("Introduzca las unidades que quieres añadir (si introduces 0 el producto se eliminará): ");
                 int unidades = int.Parse(Console.ReadLine());
 
-                if (unidades <  0)
+                if (unidades < 0)
                 {
                     throw new ArgumentException("Error: las unidades no pueden ser negativo");
                 }
@@ -190,15 +195,16 @@ namespace Solucion
                 else
                 {
                     producto.Unidades = 0;
+                    listaProductos.Remove(producto);
                 }
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 Console.WriteLine("Error: Ingresa un número válido para las unidades.");
             }
             catch (ArgumentException e)
             {
-                Console.WriteLine($"Error inesperado: {e.Message}"); 
+                Console.WriteLine($"Error inesperado: {e.Message}");
             }
 
         }
